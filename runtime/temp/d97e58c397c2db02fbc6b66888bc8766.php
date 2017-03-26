@@ -1,0 +1,129 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:67:"C:\AppServ\www\tp5\public/../application/admin\view\auth\login.html";i:1490353900;}*/ ?>
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>登录</title>  
+    <link rel="stylesheet" href="__URL__/css/pintuer.css">
+    <link rel="stylesheet" href="__URL__/css/admin.css">
+    <script src="__URL__/js/jquery.js"></script>
+    <script src="__URL__/js/pintuer.js"></script>  
+</head>
+<body>
+
+<div class="bg"></div>
+<div class="container">
+    <div class="line bouncein">
+        <div class="xs6 xm4 xs3-move xm4-move">
+            <div style="height:150px;"></div>
+            <div class="media media-y margin-big-bottom">           
+            </div>         
+           
+            <div class="panel loginbox">
+                <div class="text-center margin-big padding-big-top"><h1>后台管理中心</h1></div>
+                <div class="panel-body" style="padding:30px; padding-bottom:10px; padding-top:10px;">
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="text" class="input input-big" name="username" placeholder="登录账号" data-validate="required:请填写账号" />
+                            <span class="icon icon-user margin-small"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="field field-icon-right">
+                            <input type="password" class="input input-big" name="password" placeholder="登录密码" data-validate="required:请填写密码" />
+                            <span class="icon icon-key margin-small"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="field">
+                        
+                      <font color = "red">管理员</font>    <input type = "radio" name ="1" value="2"></input>
+                       <font color = "red">卖家</font>     <input type ="radio" name="1" value="1"></input>
+                        </div>
+                        <span id ="dl"></span>
+                    </div>
+                </div>
+                <div style="padding:30px;"><input type="submit"
+                id = "login"class="button button-block bg-main text-big input-big" value="登录"></div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+    <script type="text/javascript" src="__URL__/js/jquery-1.8.3.min.js"></script>
+
+    <script type="text/javascript">
+       $('input[type=submit]').click(function(){
+
+        //获取用户名
+        var username = $('input[name=username]').val();
+        //获取密码
+        var password =$('input[name=password]').val();
+        //获取radio 值
+        //
+        
+        var role  = $('input[type=radio]:checked').val();
+
+        if(role == 2){
+            $.post('/admin/Auth/doLogin',{username:username,password:password},function(result){
+
+                      if(result.status){
+                       // alert(result.msg);
+                       // 
+                       location.href= '<?php echo url("admin/index/index"); ?>';
+                       //location.href(':{admin/inde/index}');
+
+                    }else{
+
+                       // alert(result.msg);
+                    }
+
+                   
+
+                    },"JSON");
+            
+            
+
+
+        }else{
+
+            $.post('/admin/Auth/mLogin',{username:username,password:password},function(result){
+
+
+                alert(result);
+
+                    if(result.status){
+                            //
+                        $('#dl').html('<font color="purple" size="3">欢迎登录,正在为您跳转到后台页面</font>');
+                        setTimeout(function(){
+                            location.href= '<?php echo url("admin/index/index"); ?>';
+
+
+                        },1000);
+             
+                    }else{
+
+                        $('#dl').html('<font color="red">登录失败，请检查用户名或密码是否正确</font>');
+                    }
+
+                    },"JSON");
+            
+           // '/admin/Auth/,mlogin',
+          //  alert(1);
+
+            //$.post(function(){},'JSON')
+            //执行卖家方法
+        }
+
+       })
+
+
+      
+
+
+    </script>
+    </body>
