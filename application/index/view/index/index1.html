@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>千寻二手街 - 最安全方便的校内二手市场</title>
+    <meta name="keywords" content="校园,大学,大学生,二手,闲置,二手市场,跳蚤市场,旧货市场,二手网,二手交易,校园二手,校园二手市场,校园二手网,校园跳蚤市场,大学生二手,大学生二手市场,大学生二手网,大学生跳蚤市场" />
+    <meta name="description" content="校园二手街是最安全方便的校园二手市场、校园二手网、校园跳蚤市场、校园旧货市场、大学生二手市场、大学生二手网、大学生跳蚤市场、大学生旧货市场、二手市场、旧货市场、跳蚤市场、二手网，覆盖多所大学的大学生。涵盖二手手机、二手自行车、二手电动车、二手教材、二手书、二手球拍等旧货市场物品信息，满足大学生校园内的二手交易、二手求购的需求。学号认证更安全，校内交易更方便。" />
+    <meta name="baidu-site-verification" content="8S16NULIyk" />
+    <meta name="google-site-verification" content="vbwE0Aq4e-TBMajDfvoYPHFtOAiZlQcssKXEOKaMpBo" />
+    <meta name="360-site-verification" content="410048b82228095750d06e117eb4ccca" />
+    <link rel="stylesheet" href="__STATIC_URL__/amaze/css/common_5.css"/>
+    <link rel="stylesheet" href="__STATIC_URL__/amaze/css/school_5.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="__STATIC_URL__/amaze/css/shwstyle.css" /> -->
+</head>
+<body>
+    <div class="wrap-container">
+        <div class="school_top">
+            <h3>选择学校</h3>
+        </div>
+        <div class="school-area">
+
+            <div class="wrap-school-search">
+                <div class="school-search">
+                    <div class="search-left fl"></div>
+                    <div class="search-ipt fl">
+                        <input type="text" placeholder="输入学校中文名称"/>
+                    </div>
+                    <div class="search-btn fl">搜索学校</div>
+                </div>
+            </div>
+            <div class="wrap-school-list">
+            {foreach $info as $value}
+                <div class="school-item">
+                    <div class="item-title">
+                        <div class="item-title-txt">{$value->local}</div>
+                    </div>
+                    <p class="school-list">
+                        <input type="hidden" name="hidden" value="{$value->school_id}">
+                        <a href="{:url('index/index/doShow')}?a={$value->school_id}" class="school">{$value->schoolname}</a>
+
+                    </p>
+                </div>
+            {/foreach}
+
+            </div>
+        </div>
+        <div class="school-bottom">
+            <p class="if-contact">如果找不到您的学校，可申请开通。</p>
+            <div class="apply-school">
+                <a target="_blank" href="http://www.2shoujie.com/open">申请开通</a>
+            </div>
+            <p class="friendlink">
+                友情链接 : <a href="http://www.hustonline.net" target="_blank" class="fl_a">华中大在线</a>
+                &nbsp;<a href="http://ik.hustonline.net" target="_blank" class="fl_a">iKnow</a>
+            </p>
+            <p class="copyright">鄂ICP备14003265号-2&nbsp;&nbsp;©2014-2015 易橙科技 版权所有</p>
+        </div>
+    </div>
+    <script src="__STATIC_URL__/amaze/js/jquery-1.10.1.min_5.js"></script>
+    <script src="__STATIC_URL__/amaze/js/sear_school_5.js"></script>
+    <script src="__STATIC_URL__/amaze/jquery.js"></script>
+    <script src="__STATIC_URL__/amaze/js/lanren.js"></script>
+    <!-- 代码部分end -->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?141dfb73d31a5c8909afe43264b7c38f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>

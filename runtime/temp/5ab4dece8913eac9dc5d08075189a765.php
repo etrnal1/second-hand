@@ -1,0 +1,147 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"C:\wamp\www\second-hand\thinkphp\public/../application/index\view\index\one.html";i:1490579032;}*/ ?>
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>【<?php echo \think\Session::get('schoolname'); ?>二手手机转让|<?php echo \think\Session::get('schoolname'); ?>二手手机交易市场】 - <?php echo \think\Session::get('schoolname'); ?>校园二手街</title>
+    <meta name="keywords" content="中南财经政法大学二手手机转让,中南财经政法大学二手手机交易市场"/>
+    <meta name="description" content="中南财经政法大学二手手机交易网为您提供大量中南财经政法大学二手手机报价、交易等信息，在这里您可以免费查看和发布中南财经政法大学二手手机转让、求购、价格等信息，买卖中南财经政法大学二手手机请到校园二手街中南财经政法大学二手手机交易市场"/>
+    <link rel="icon" href="http://znufe.2shoujie.com/favicon.ico"/>
+    <link rel="icon" href="http://znufe.2shoujie.com/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="__STATIC_URL__/amaze/css/init.css"/>
+    <link rel="stylesheet" href="__STATIC_URL__/amaze/css/main.css"/>
+    <link rel="stylesheet" href="__STATIC_URL__/amaze/css/index.css"/>
+    <link rel="stylesheet" href="__STATIC_URL__/amaze/css/sear.css"/>
+    <link rel="stylesheet" href="__STATIC_URL__/amaze/css/animate.css"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC_URL__/amaze/css/bootstrap.css">
+    <script type="text/javascript" src="__STATIC_URL__/amaze/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="__STATIC_URL__/amaze/js/bootstrap.js"></script>
+
+    <script>
+    (function(){if(!/*@cc_on!@*/0)return;var e = "abbr,article,aside,audio,canvas,datalist,details,dialog,eventsource,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video".split(','),i=e.length;while(i--){document.createElement(e[i])}})()
+    </script>
+
+</head>
+<body>
+    <header class="ease2">
+        <div class="header-main center ease2">
+            <a href="<?php echo url('index/index/show'); ?>" class="slogan">
+                <h1 class="s-main"></h1>
+                <div class="s-submain"></div>
+                <img src="__STATIC_URL__/amaze/picture/2shoujie_web_title_qianxun.png" alt="中南财经政法大学最安全方便的校园二手市场"/>
+            </a>
+            <div class="search-box-wr ease2">
+                <form class="search-box center" action="<?php echo url('/index/Goods/search'); ?>" method="post">
+                    <button type="submit" class="search-submit">搜索</button>
+                    <div class="input-wr">
+                        <img class="search-icon" src="__STATIC_URL__/amaze/picture/search-icon.png"/>
+                        <div class="search-input">
+                        <input name="keyword" id="keyword" x-webkit-speech type="text" placeholder="搜索你想要的二货"/>
+                        </div>
+                    </div>
+                </form>
+                <div class="search-hots center ease2">
+                    <a class="hots" href="<?php echo url('index/index/show'); ?>"><?php echo \think\Session::get('schoolname'); ?>二手市场</a>
+                    <span class="cat-bread">></span>
+                                        <a class="hots" href="/category4"><?php echo \think\Session::get('schoolname'); ?>二手手机</a>
+                </div>
+            </div>
+        <?php if(!empty(\think\Session::get('username'))): ?>
+        <div class="log-re ease2">
+
+                    <!-- <div class="button" > -->
+                    <div class="dropdown">
+                      <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                       <?php echo \think\Session::get('username'); ?>
+                        <span class="caret"></span>
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li>嗨,<?php echo \think\Session::get('username'); ?></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="<?php echo url('index/person/person'); ?>">个人中心</a></li>
+                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="<?php echo url('index/auth/logout'); ?>">退出</a></li>
+
+                        <!-- <li><a href="#">Separated link</a></li> -->
+                      </ul>
+                    </div>
+                    <!-- </div> -->
+                    <!-- <a href="/index/auth/logout"><div class="button" >退出</div></a> -->
+        </div>
+        <?php endif; if(empty(\think\Session::get('username'))): ?>
+        <div class="log-re ease2">
+                                <a href="/index/auth/login"><div class="button" >登录</div></a>
+                                <a href="/index/auth/register"><div class="button" >注册</div></a>
+        </div>
+        <?php endif; ?>
+        </div>
+    </header>
+    <div class="container">
+        <div class="main center">
+            <div class="rank-by clearfix" data-cur="1">
+                <div class="rank-title-wr">
+                    <!-- <a href="/category4/time/pn1">
+                        <div class="rank-title default" data-rank="1">时间</div>
+                    </a>
+                    <a href="/category4/credit/pn1">
+                        <div class="rank-title cred" data-rank="3">信用</div>
+                    </a>
+                    <a class="pr rank-title-price" href="/category4/priceAsc/pn1">
+                        <div class="rank-title pri " data-rank="4">价格</div>
+                                                <span id="up_down" order="nor" class="price-nor"></span>
+                                            </a>
+                    <a href="/category4/hot/pn1">
+                        <div class="rank-title hot" data-rank="5">热度</div>
+                    </a> -->
+                </div>
+                <div class="wave ease2"></div>
+            </div>
+            <div class="item-list">
+                <ul class="items clearfix">
+                    <?php if(!empty($shop)): ?>
+                        <li class="item">
+                            <a href="<?php echo url('index/Goods/goods'); ?>?id=<?php echo $shop->all_id; ?>" class="img" target="_blank"><img src="http://911.com/uploads/<?php echo $shop->shop_pictrue[0]; ?>" /></a>
+                            <div class="info">
+                                <div class="price"><?php echo $shop->shop_price; ?></div><!--价格-->
+                                <div class="name">
+                                    <a href="<?php echo url('index/Goods/goods'); ?>?id=<?php echo $shop->all_id; ?>" target="_blank"><?php echo $shop->shop_name; ?></a>
+                                </div>
+                                <div class="department"><span>临床11级(未认证)</span></div>
+                                <div class="place"><span>全校</span></div>
+                            </div>
+                        </li>
+                    <?php else: ?>
+                        <li class="item_sorry">
+                        <font color="black">抱歉:您所要寻找的</font> <font color="red">"<?php echo $class_id; ?>"</font> <font color="black">未找到</font>
+                        <a href="<?php echo url('index/index/show'); ?>" class="img" target="_blank"><img src="http://911.com/static/amaze/picture/sorry.jpg" /></a>
+                        </li>
+                    <?php endif; ?>
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <img class="footer-tri" src="picture/footer-tri.png"/>
+        <div class="site-msg line2">
+            <span class="power">&copy;2016-2017 千寻 版权所有</span>
+            <!-- <span>鄂ICP备14003265号-2</span> -->
+        </div>
+    </footer>
+    <script src="__STATIC_URL__/amaze/js/jquery-1.7.2.min.js"></script>
+    <script src="__STATIC_URL__/amaze/js/common.js"></script>
+    <script src="__STATIC_URL__/amaze/js/sear.js"></script>
+    <script src="__STATIC_URL__/amaze/js/add.js"></script>
+    <script src="__STATIC_URL__/amaze/js/trick.js"></script>
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?141dfb73d31a5c8909afe43264b7c38f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>
