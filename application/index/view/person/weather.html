@@ -1,0 +1,252 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <title>【{$Think.session.schoolname}二手网|{$Think.session.schoolname}跳蚤市场|{$Think.session.schoolname}二手市场】 - {$Think.session.schoolname}校园二手街</title>
+    <meta name="keywords" content="中南财经政法大学,二手,闲置,二手交易,二手市场,旧货市场,中南财经政法大学二手网,中南财经政法大学跳蚤市场,中南财经政法大学二手市场,中南财经政法大学旧货市场"/>
+    <meta name="description" content="校园二手街中南财经政法大学跳蚤市场频道是专门为中南财经政法大学用户提供的二手交易平台、旧货市场。您可以发布、查找中南财经政法大学二手自行车、二手电动车、二手教材、二手手机、二手电脑、租房、二手书、二手iPhone等二手闲置物品信息。买卖二手物品，尽在中南财经政法大学二手网。"/>
+    <link rel="icon" href="http://znufe.2shoujie.com/favicon.ico"/>
+    <link rel="icon" href="http://znufe.2shoujie.com/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="__STATIC_URL__/amaze/css/init_4.css"/>
+    <link rel="stylesheet" href="__STATIC_URL__/amaze/css/main_4.css"/>
+    <link rel="stylesheet" href="__STATIC_URL__/amaze/css/index_41.css"/>
+    <link rel="stylesheet" href="__STATIC_URL__/amaze/css/animate_4.css"/>
+    <link rel="stylesheet" type="text/css" href="__STATIC_URL__/amaze/css/bootstrap.css">
+    <script type="text/javascript" src="__STATIC_URL__/amaze/js/jquery-1.12.4.js"></script>
+    <script type="text/javascript" src="__STATIC_URL__/amaze/js/bootstrap.js"></script>
+
+    <script>
+    (function(){if(!/*@cc_on!@*/0)return;var e = "abbr,article,aside,audio,canvas,datalist,details,dialog,eventsource,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video".split(','),i=e.length;while(i--){document.createElement(e[i])}})()
+    </script>
+
+     <style>
+        .container {
+            width:1170px;
+            height:800px;
+        }
+        .city {
+            margin-top:10px;
+            margin-left:500px;
+        }
+        .prev {
+            width:103px;
+            height:291px;
+            margin-left:100px;
+            margin-top:20px;
+            position:absolute;
+        }
+        .day1 {
+            width:103px;
+            height:291px;
+            position:absolute;
+            margin-left:250px;
+            margin-top:20px;
+        }
+        .night1 {
+            width:103px;
+            height:291px;
+            position:absolute;
+            margin-left:370px;
+            margin-top:20px;
+        }
+        .day2 {
+            width:103px;
+            height:291px;
+            position:absolute;
+            margin-left:490px;
+            margin-top:20px;
+        }
+        .night2 {
+            width:103px;
+            height:291px;
+            position:absolute;
+            margin-left:610px;
+            margin-top:20px;
+        }
+        .day3 {
+            width:103px;
+            height:291px;
+            position:absolute;
+            margin-left:730px;
+            margin-top:20px;
+        }
+        .night3 {
+            width:103px;
+            height:291px;
+            position:absolute;
+            margin-left:850px;
+            margin-top:20px;
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="city">
+            <div><font color="green">您当前所在城市:</font> {$curl->cityInfo->c5}</div>
+
+        </div>
+        <div class="prev">
+            今天
+            <img src="{$curl->now->weather_pic}">
+            <div>
+                <div><font color="green">天气情况:</font></div>
+                <div>{$curl->now->weather}</div>
+                <div><font color="green">温度:</font></div>
+                <div>{$curl->now->temperature}</div>
+                <div><font color="green">风向:</font></div>
+                <div>{$curl->now->wind_direction}</div>
+                <div><font color="green">级别:</font></div>
+                <div>{$curl->now->wind_power}</div>
+                <div><font color="green">空气湿度:</font></div>
+                <div>{$curl->now->sd}</div>
+            </div>
+        </div>
+
+        <div class="day1">
+            明天
+            <img src="{$curl->f1->day_weather_pic}">
+            <div>
+                <div><font color="green">天气情况:</font></div>
+                <div>{$curl->f1->day_weather}</div>
+                <div><font color="green">温度:</font></div>
+                <div>{$curl->f1->day_air_temperature}</div>
+                <div><font color="green">风向:</font></div>
+                <div>{$curl->f1->day_wind_direction}</div>
+                <div><font color="green">级别:</font></div>
+                <div>{$curl->f1->day_wind_power}</div>
+                <div><font color="green">降水:</font></div>
+                <div>{$curl->f1->jiangshui}</div>
+            </div>
+        </div>
+
+        <div class="night1">
+            明晚
+            <img src="{$curl->f1->night_weather_pic}">
+            <div>
+                <div><font color="green">天气情况:</font></div>
+                <div>{$curl->f1->night_weather}</div>
+                <div><font color="green">温度:</font></div>
+                <div>{$curl->f1->night_air_temperature}</div>
+                <div><font color="green">风向:</font></div>
+                <div>{$curl->f1->night_wind_direction}</div>
+                <div><font color="green">级别:</font></div>
+                <div>{$curl->f1->night_wind_power}</div>
+
+            </div>
+        </div>
+
+        <div class="day2">
+            后天
+            <img src="{$curl->f2->day_weather_pic}">
+            <div>
+                <div><font color="green">天气情况:</font></div>
+                <div>{$curl->f2->day_weather}</div>
+                <div><font color="green">温度:</font></div>
+                <div>{$curl->f2->day_air_temperature}</div>
+                <div><font color="green">风向:</font></div>
+                <div>{$curl->f2->day_wind_direction}</div>
+                <div><font color="green">级别:</font></div>
+                <div>{$curl->f2->day_wind_power}</div>
+                <div><font color="green">降水:</font></div>
+                <div>{$curl->f2->jiangshui}</div>
+            </div>
+        </div>
+
+        <div class="night2">
+            后天晚上
+            <img src="{$curl->f2->night_weather_pic}">
+            <div>
+                <div><font color="green">天气情况:</font></div>
+                <div>{$curl->f2->night_weather}</div>
+                <div><font color="green">温度:</font></div>
+                <div>{$curl->f2->night_air_temperature}</div>
+                <div><font color="green">风向:</font></div>
+                <div>{$curl->f2->night_wind_direction}</div>
+                <div><font color="green">级别:</font></div>
+                <div>{$curl->f2->night_wind_power}</div>
+
+            </div>
+        </div>
+
+        <div class="day3">
+            大后天
+            <img src="{$curl->f3->day_weather_pic}">
+            <div>
+                <div><font color="green">天气情况:</font></div>
+                <div>{$curl->f3->day_weather}</div>
+                <div><font color="green">温度:</font></div>
+                <div>{$curl->f3->day_air_temperature}</div>
+                <div><font color="green">风向:</font></div>
+                <div>{$curl->f3->day_wind_direction}</div>
+                <div><font color="green">级别:</font></div>
+                <div>{$curl->f3->day_wind_power}</div>
+                <div><font color="green">降水:</font></div>
+                <div>{$curl->f3->jiangshui}</div>
+            </div>
+        </div>
+
+        <div class="night3">
+            大后天晚上
+            <img src="{$curl->f3->night_weather_pic}">
+            <div>
+                <div><font color="green">天气情况:</font></div>
+                <div>{$curl->f3->night_weather}</div>
+                <div><font color="green">温度:</font></div>
+                <div>{$curl->f3->night_air_temperature}</div>
+                <div><font color="green">风向:</font></div>
+                <div>{$curl->f3->night_wind_direction}</div>
+                <div><font color="green">级别:</font></div>
+                <div>{$curl->f3->night_wind_power}</div>
+
+            </div>
+        </div>
+</div>
+<div class="return-to-top"><a href=""></a></div>
+
+    <footer>
+    <img class="footer-tri" src="__STATIC_URL__/amaze/picture/footer-tri_4.png"/>
+        <div class="friend-links">
+        <div class="links-title center">友情链接</div>
+        <ul class="links-wr center">
+                        <li class="first">
+                <a href="http://91.com" target="_blank" class="links">千寻二手街</a>
+            </li>
+                        <li >
+                <a href="http://tieba.baidu.com/f?ie=utf-8&kw=%E4%B8%AD%E5%8D%97%E8%B4%A2%E7%BB%8F%E6%94%BF%E6%B3%95%E5%A4%A7%E5%AD%A6&fr=search" target="_blank" class="links">河北工业大学吧</a>
+            </li>
+                        <li >
+                <a href="http://wellan.znufe.edu.cn" target="_blank" class="links">文澜新闻网</a>
+            </li>
+                        <li >
+                <a href="http://uzone.univs.cn/school_2113.html" target="_blank" class="links">中部崛起网</a>
+            </li>
+                    </ul>
+    </div>
+        <div class="site-msg line1">
+        <a class="about" id="fd_footer" href="javascript:;">产品意见反馈</a>
+        <a class="about" href="http://www.2shoujie.com/joinUs" target="_blank">加入我们</a>
+        <a class="contact" href="http://www.2shoujie.com/open" target="_blank">开通学校|开放平台</a>
+    </div>
+    <div class="site-msg line2">
+        <span class="power">&copy;2016-2017 千寻 版权所有</span>
+        <!-- <span>鄂ICP备14003265号-2</span> -->
+    </div>
+</footer>
+    <script src="__STATIC_URL__/amaze/js/jquery-1.7.2.min_4.js"></script>
+    <script src="__STATIC_URL__/amaze/js/common_4.js"></script>
+    <script src="__STATIC_URL__/amaze/js/add_4.js"></script>
+
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?141dfb73d31a5c8909afe43264b7c38f";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+</body>
+</html>
+

@@ -64,7 +64,7 @@
                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;嗨,{$Think.session.username}</li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{:url('index/person/person')}">个人中心</a></li>
-                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="{:url('index/person/weather')}" target="_blank">查看天气</a></li>
                         <li><a href="{:url('index/auth/logout')}">退出</a></li>
                         <!-- <li><a href="#">Separated link</a></li> -->
                       </ul>
@@ -90,7 +90,7 @@
                     <div>
                         <i class="nav-icons"></i>
                         <div id="college"><span>{$Think.session.schoolname}</span></div>
-                                        <a class="switch" href="http://www.2shoujie.com/">切换</a>
+                                        <a class="switch" href="{:url('index/index/index')}">切换</a>
                                     </div>
                 </li>
                 {foreach $big as $value}
@@ -100,7 +100,7 @@
                                 <img src="__STATIC_URL__/amaze/picture/{$value->image}" alt="校园代步"/>
                             </i>
                             <h3>{$value->class_name}</h3>
-                            <!-- <h3>校园代步</h3> -->
+
                         </a>
                     <div class="sub-nav">
                         <span >
@@ -110,7 +110,6 @@
 
 
                                             <a href="{:url('index/index/one')}?id={$value->class_id}" target="_blank">{$v->little_name}</a>
-                                            <!-- <a href="{:url('index/index/one')}" target="_blank">电动车</a> -->
 
 
 
@@ -134,7 +133,30 @@
                 <li><a href="{:url('index/notice/phone')}" target="_blank">购买二手iPhone注意事项</a></li>
             </ul>
         </div>
-        111等待遍历
+        <div class="item-list">
+            <ul class="items clearfix">
+                {foreach $all as $shop}
+
+                <li class="item">
+
+                    <a href="{:url('index/Goods/goods')}?id={$shop->all_id}" class="img" target="_blank"><img src="http://911.com/uploads/{$shop->shop_pictrue[0]}" /></a>
+
+                    <div class="info">
+                        <div class="price">{$shop->shop_price}</div><!--价格-->
+                        <div class="name">
+                            <a href="{:url('index/Goods/goods')}?id={$shop->all_id}" target="_blank">{$shop->shop_name}</a>
+                        </div>
+                        <div class="department"><span>{$shop->shop_profile}</span></div>
+                    </div>
+
+                </li>
+                {/foreach}
+
+                 <li class="item fixed"></li>
+                <li class="item fixed"></li>
+                <li class="item fixed"></li>
+            </ul>
+        </div>
 
     </div>
 </div>

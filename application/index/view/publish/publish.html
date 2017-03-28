@@ -70,7 +70,7 @@
                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;嗨,{$Think.session.username}</li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{:url('index/person/person')}">个人中心</a></li>
-                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="{:url('index/person/weather')}" target="_blank">查看天气</a></li>
                         <li><a href="{:url('index/auth/logout')}">退出</a></li>
 
                         <!-- <li><a href="#">Separated link</a></li> -->
@@ -97,7 +97,7 @@
                     <div>
                         <i class="nav-icons"></i>
                         <div id="college"><span>{$Think.session.schoolname}</span></div>
-                                        <a class="switch" href="http://www.2shoujie.com/">切换</a>
+                                        <a class="switch" href="{:url('index/index/index')}">切换</a>
                                     </div>
                 </li>
                 {foreach $big as $value}
@@ -117,7 +117,6 @@
 
 
                                             <a href="{:url('index/index/one')}?id={$value->class_id}}" target="_blank">{$v->little_name}</a>
-                                            <!-- <a href="{:url('index/index/one')}" target="_blank">电动车</a> -->
 
 
 

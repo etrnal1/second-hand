@@ -3,7 +3,7 @@
  * @Author: Marte
  * @Date:   2017-03-19 14:33:19
  * @Last Modified by:   Marte
- * @Last Modified time: 2017-03-27 17:21:30
+ * @Last Modified time: 2017-03-28 19:39:31
  */
 namespace app\index\controller;
 
@@ -51,6 +51,38 @@ class Person extends Controller
         $this->assign('small',$small);
         $this->assign('user',$user);
         $this->assign('collect',$collect);
+        return $this->fetch();
+    }
+
+    public function weather()
+    {
+        $host = "https://ali-weather.showapi.com";
+        $path = "/ip-to-weather";
+        $method = "GET";
+        $appcode = "1921e702424c4dcbad7fed0aa707ae11";
+        $headers = array();
+        array_push($headers, "Authorization:APPCODE " . $appcode);
+        $querys = "ip=101.200.62.210&need3HourForcast=0&needAlarm=0&needHourData=0&needIndex=0&needMoreDay=0";
+        $bodys = "";
+        $url = $host . $path . "?" . $querys;
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($curl, CURLOPT_FAILONERROR, false);//显示HTTP状态码，默认行为是忽略编号小于等于400的HTTP信息
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_HEADER, true);//启用时会将头文件的信息作为数据流输出
+        if (1 == strpos("$".$host, "https://"))
+        {
+            curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
+        }
+
+        $curl = curl_exec($curl);
+        $curl = strstr($curl,'{');
+        $curl = json_decode($curl);
+        $curl = $curl->showapi_res_body;
+        $this->assign('curl',$curl);
         return $this->fetch();
     }
 

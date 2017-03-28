@@ -27,7 +27,7 @@ return [
 
     ],
     // 默认跳转页面对应的模板文件
-    'dispatch_success_tmpl' => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl',
-    'dispatch_error_tmpl' => THINK_PATH . 'tpl' . DS . 'dispatch_jump.tpl'
+    'dispatch_success_tmpl' =>  APP_PATH . 'index/view/public' . DS . 'success.html',
+    'dispatch_error_tmpl' => APP_PATH . 'index/view/public' . DS . 'error.html'
 
   ];

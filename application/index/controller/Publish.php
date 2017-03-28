@@ -3,7 +3,7 @@
  * @Author: Marte
  * @Date:   2017-03-19 00:18:25
  * @Last Modified by:   Marte
- * @Last Modified time: 2017-03-27 13:45:58
+ * @Last Modified time: 2017-03-29 00:14:36
  */
 namespace app\index\controller;
 
@@ -101,6 +101,7 @@ class Publish extends Auth
         $all->shop_pictrue = json_encode($arr_pic);
         $all->schoolName = $schoolName;
         $all->save();
+        $this->success('发布成功','/index/index/show');
     }
 
     /**
@@ -126,10 +127,22 @@ class Publish extends Auth
      */
     public function newest()
     {
-
+        $schoolName = Session::get('schoolname','think');
         $big = Shop_class::select();
         $small = Shop_little_class::select();
 
+        $time = time();
+        $all = Shop_all::where(['status' =>  1])->where(['schoolName' => $schoolName])->select();
+        foreach ($all as $key => $value) {
+            $pic = $value->shop_pictrue;
+            $create_time = $value->create_time;
+            $value['shop_pictrue'] = json_decode($pic);
+            if(($time - $create_time)/24*3600 < 3)
+            {
+                $value['create_time'] = $create_time;
+            }
+        }
+        $this->assign('all',$all);
         $this->assign('big',$big);
         $this->assign('small',$small);
         return $this->fetch();
@@ -166,6 +179,6 @@ class Publish extends Auth
         $qiugou->qq = $_POST['qq'];
         $qiugou->user_id = $user_id;
         $qiugou->save();
-        return json(['status' => 1, 'msg' => '求购成功']);
+        return json(['status' => 1, 'msg' => '求购成功','redirect_url' => url('index/publish/publish_qiugou')]);
     }
 }

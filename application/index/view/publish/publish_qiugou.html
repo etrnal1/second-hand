@@ -64,7 +64,7 @@
                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;嗨,{$Think.session.username}</li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{:url('index/person/person')}">个人中心</a></li>
-                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="{:url('index/person/weather')}" target="_blank">查看天气</a></li>
                         <li><a href="{:url('index/auth/logout')}">退出</a></li>
                         <!-- <li><a href="#">Separated link</a></li> -->
                       </ul>
@@ -90,7 +90,7 @@
                     <div>
                         <i class="nav-icons"></i>
                         <div id="college"><span>{$Think.session.schoolname}</span></div>
-                                        <a class="switch" href="http://www.2shoujie.com/">切换</a>
+                                        <a class="switch" href="{:url('index/index/index')}">切换</a>
                                     </div>
                 </li>
                 {foreach $big as $value}
@@ -110,7 +110,7 @@
 
 
                                             <a href="{:url('index/index/one')}?id={$value->class_id}" target="_blank">{$v->little_name}</a>
-                                            <!-- <a href="{:url('index/index/one')}" target="_blank">电动车</a> -->
+
 
 
 
@@ -129,16 +129,16 @@
         <div class="neirong">
 
             <div>商品名称:</div>
-            <div><input type="text" name="name" value=""></div><br>
+            <div><input type="text" name="name" value="" style="width:300px;height:50px;" placeholder="最多25个字"></div><br>
             <div>商品描述:</div>
-            <div><input type="text" name="profile" vlaue=""></div><br>
+            <div><input type="text" name="profile" vlaue="" style="width:300px;height:50px;" placeholder="建议填写物品用途、新旧程度、原价等信息" ></div><br>
             <div>交易地点:</div>
-            <div><input type="text" name="location" value=""></div><br>
+            <div><input type="text" name="location" value="" style="width:300px;height:50px;" placeholder="宿舍、教学楼、食堂等" ></div><br>
             <div>期望价格:</div>
-            <div><input type="text" name="price" value=""></div><br>
+            <div><input type="text" name="price" value="" style="width:300px;height:50px;" placeholder="最多25个字"></div><br>
             联系方式：
             <div>手机号:</div>
-            <div><input type="text" name="phone" value=""></div><br>
+            <div><input type="text" name="phone" id="phone" value=""></div><br>
             <div>QQ:</div>
             <div><input type="text" name="qq" value=""></div>
             <input type="submit" value="求购" class="submit"  size="15" style="width:100px; height:50px;" />
@@ -225,13 +225,20 @@
             if(data.status){
                 alert(data.msg);
 
-                  location.href = '{:url("/index/publish/publish_qiugou")}';
-
             }else{
               alert(data.msg);
             }
           }, 'JSON');
         })
     </script>
+    <script type="text/javascript">
+        $('#phone').blur(function(){
+            var phone = $('#phone').val();
+            $.post('/index/message',{phone:phone},function(){
+
+            })
+        })
+    </script>
+
 </body>
 </html>

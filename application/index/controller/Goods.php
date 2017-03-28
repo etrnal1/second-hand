@@ -3,7 +3,7 @@
  * @Author: Marte
  * @Date:   2017-03-22 15:18:10
  * @Last Modified by:   Marte
- * @Last Modified time: 2017-03-27 16:21:47
+ * @Last Modified time: 2017-03-28 09:46:29
  */
 namespace app\index\controller;
 use app\index\model\User;
@@ -131,7 +131,7 @@ class Goods extends Auth
         $user_id = Session::get('user_id','think');//用户id
         $id = $_GET['id'];//商品id
         $str = '';
-        $comments = Comment::where(['shop_id' => $id])->where(['user_id' => $user_id])->select();
+        $comments = Comment::where(['shop_id' => $id])->select();
         foreach ($comments as $key => $value) {
             $content = $value->content;
             $str .= '<li><a href="#">'.$content.'</a></li>';
