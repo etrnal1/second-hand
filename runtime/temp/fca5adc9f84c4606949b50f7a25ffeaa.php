@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\index\show.html";i:1490340404;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\index\show.html";i:1490700164;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -45,13 +45,14 @@
             </form>
             <div class="search-hots center ease2">
                 <span>热门：</span>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>自行车</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>运动健身</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>教材</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>生活娱乐</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=1" target="_blank"><font color="#66666A"><b>自行车</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=2" target="_blank"><font color="#66666A"><b>手机电脑</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=7" target="_blank"><font color="#66666A"><b>教材</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=5" target="_blank"><font color="#66666A"><b>生活娱乐</b></font></a>
                             </div>
 
         </div>
+
         <?php if(!empty(\think\Session::get('username'))): ?>
         <div class="log-re ease2">
 
@@ -65,12 +66,15 @@
                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;嗨,<?php echo \think\Session::get('username'); ?></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="<?php echo url('index/person/person'); ?>">个人中心</a></li>
-                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="<?php echo url('index/person/weather'); ?>" target="_blank">查看天气</a></li>
+
                         <li><a href="<?php echo url('index/auth/logout'); ?>">退出</a></li>
 
                         <!-- <li><a href="#">Separated link</a></li> -->
                       </ul>
                     </div>
+
+
                     <!-- </div> -->
                     <!-- <a href="/index/auth/logout"><div class="button" >退出</div></a> -->
         </div>
@@ -98,7 +102,7 @@
                 </li>
                 <?php foreach($big as $value): ?>
                 <li class="category-1 catg">
-                        <a href="<?php echo url('index/index/one'); ?>" target="_blank">
+                        <a href="<?php echo url('index/index/one'); ?>?id=<?php echo $value->class_id; ?>" target="_blank">
                             <i class="nav-icons">
                                 <img src="__STATIC_URL__/amaze/picture/<?php echo $value->image; ?>" alt="校园代步"/>
                             </i>
@@ -110,7 +114,7 @@
                             <?php foreach($small as $v): if($v->class_id == $value->class_id): ?>
 
 
-                                            <a href="<?php echo url('index/index/one'); ?>?id={}" target="_blank"><?php echo $v->little_name; ?></a>
+                                            <a href="<?php echo url('index/index/one'); ?>?id=<?php echo $value->class_id; ?>" target="_blank"><?php echo $v->little_name; ?></a>
                                             <!-- <a href="<?php echo url('index/index/one'); ?>" target="_blank">电动车</a> -->
 
 
@@ -154,8 +158,7 @@
                         <div class="name">
                             <a href="<?php echo url('index/Goods/goods'); ?>?id=<?php echo $shop->all_id; ?>" target="_blank"><?php echo $shop->shop_name; ?></a>
                         </div>
-                        <div class="department"><span>临床11级(未认证)</span></div>
-                        <div class="place"><span>全校</span></div>
+                        <div class="department"><span><?php echo $shop->shop_profile; ?></span></div>
                     </div>
 
                 </li>
@@ -241,55 +244,3 @@
 </body>
 </html>
 
-<!-- <!doctype html>
-<html lang="zh">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CSS3动态背景登录框代码 - 站长素材</title>
-<link rel="stylesheet" type="text/css" href="__STATIC_URL__/amaze/css/styles.css">
-</head>
-<body>
-<div class="htmleaf-container">
-  <div class="wrapper">
-    <div class="container">
-      <h1>Welcome</h1>
-
-      <form class="form">
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
-        <button type="submit" id="login-button">Login</button>
-      </form>
-    </div>
-
-    <ul class="bg-bubbles">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-  </div>
-</div>
-
-<script src="__STATIC_URL__/amaze/js/jquery-2.1.1.min.js" type="text/javascript"></script>
-<script>
-$('#login-button').click(function (event) {
-  event.preventDefault();
-  $('form').fadeOut(500);
-  $('.wrapper').addClass('form-success');
-});
-</script>
-
-<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';color:#000000">
-<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
-<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
-</div>
-</body>
-</html> -->

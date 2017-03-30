@@ -45,7 +45,8 @@ class Index extends Controller
         $small = Shop_little_class::select();
 
         // $all = Shop_all::select();
-        $all = Shop_all::where(['status' =>  1])->where(['schoolName' => $schoolName])->paginate(2);
+
+        $all = Shop_all::where(['status' =>  1])->where(['schoolName' => $schoolName])->paginate(4);
 
 
         foreach ($all as $key => $value) {
@@ -69,18 +70,12 @@ class Index extends Controller
             $schoolName = $_POST['schoolName'];
             Session::set('schoolname',$schoolName);
         }
-
-        // if(isset($_GET['a'])){
-        //     $id = $_GET['a'];
-        //     $name = School::where(['school_id' => $id])->find();
-        //     Session::set('schoolname',$name['schoolname']);
-        // }
-        // Session::set('schoolname',$name['schoolname']);
-
-        $big = Shop_class::select();
+        if($schoolName = Session::get('schoolname','think'))
+        {
+            $big = Shop_class::select();
         $small = Shop_little_class::select();
 
-        $all = Shop_all::where(['status' =>  1])->where(['schoolName' => $schoolName])->paginate(2);
+        $all = Shop_all::where(['status' =>  1])->where(['schoolName' => $schoolName])->paginate(4);
 
         foreach ($all as $key => $value) {
             $pic = $value->shop_pictrue;
@@ -91,6 +86,9 @@ class Index extends Controller
         $this->assign('all',$all);
         $this->assign('small',$small);
         return $this->fetch();
+        }
+
+
     }
 
 

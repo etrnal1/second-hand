@@ -1,11 +1,12 @@
 <?php
+namespace app\index\controller;
+
 /**
  * @Author: Marte
  * @Date:   2017-03-19 14:33:19
  * @Last Modified by:   Marte
- * @Last Modified time: 2017-03-28 19:39:31
+ * @Last Modified time: 2017-03-30 15:52:35
  */
-namespace app\index\controller;
 
 use app\index\model\User;
 use think\View;
@@ -63,6 +64,7 @@ class Person extends Controller
         $headers = array();
         array_push($headers, "Authorization:APPCODE " . $appcode);
         $querys = "ip=101.200.62.210&need3HourForcast=0&needAlarm=0&needHourData=0&needIndex=0&needMoreDay=0";
+        //
         $bodys = "";
         $url = $host . $path . "?" . $querys;
         $curl = curl_init();

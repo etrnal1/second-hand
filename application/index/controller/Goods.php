@@ -1,11 +1,12 @@
 <?php
+namespace app\index\controller;
 /**
  * @Author: Marte
  * @Date:   2017-03-22 15:18:10
  * @Last Modified by:   Marte
- * @Last Modified time: 2017-03-28 09:46:29
+ * @Last Modified time: 2017-03-30 15:52:25
  */
-namespace app\index\controller;
+
 use app\index\model\User;
 use think\View;
 use think\Session;
@@ -118,7 +119,6 @@ class Goods extends Auth
         $comment->content = $_POST['comment'];
         $comment->save();
         return 666;
-
 
     }
     /**

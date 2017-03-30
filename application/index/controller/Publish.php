@@ -1,11 +1,12 @@
 <?php
+namespace app\index\controller;
 /**
  * @Author: Marte
  * @Date:   2017-03-19 00:18:25
  * @Last Modified by:   Marte
- * @Last Modified time: 2017-03-29 00:14:36
+ * @Last Modified time: 2017-03-30 14:26:47
  */
-namespace app\index\controller;
+
 
 use app\index\model\User;
 use think\View;
@@ -25,6 +26,7 @@ use app\index\controller\Auth;
 use think\Controller;
 use think\Validate;
 use think\Session;
+use think\Paginator;
 class Publish extends Auth
 {
     /**
@@ -52,56 +54,67 @@ class Publish extends Auth
      */
     public function upload(){
 // 获取表单上传文件
-        $schoolName = Session::get('schoolname','think');
-        $user_id = Session::get('user_id','think');
-        $user = User::where(['user_id' => $user_id])->find();
-        $id = $_POST['xiala'];
-        $result = Shop_class::where(['class_id' => $id])->find();
-        $name = $result->class;
 
-        $name = "app\index\model\\$name";
-        $class = new $name;
+        if(empty($_POST['name']) || empty($_POST['profile']) || empty($_POST['location']) || empty($_POST['price']) || empty($_POST['phone']) || empty($_POST['qq'])){
+            $this->success('发布失败','/index/publish/publish');
+        } else {
+            $schoolName = Session::get('schoolname','think');
+            $user_id = Session::get('user_id','think');
+            $user = User::where(['user_id' => $user_id])->find();
+            $id = $_POST['xiala'];
+            $result = Shop_class::where(['class_id' => $id])->find();
+            $name = $result->class;
 
-        $class->shop_name = $_POST['name'];
-        $class->shop_profile = $_POST['profile'];
-        $class->location = $_POST['location'];
-        $class->shop_price = $_POST['price'];
-        $class->user_id = $user_id;
-        // $class->save();
+            $name = "app\index\model\\$name";
+            $class = new $name;
 
-        $user->phone = $_POST['phone'];
-        $user->qq = $_POST['qq'];
-        $user->save();
+            $class->shop_name = $_POST['name'];
+            $class->shop_profile = $_POST['profile'];
+            $class->location = $_POST['location'];
+            $class->shop_price = $_POST['price'];
+            $class->user_id = $user_id;
+            // $class->save();
 
-        $files = request()->file('image');
-        $arr_pic = [];
-        foreach($files as $file){
-        // 移动到框架应用根目录/public/uploads/ 目录下
-            $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
+            $user->phone = $_POST['phone'];
+            $user->qq = $_POST['qq'];
+            $user->save();
 
-            if($info){
-            // 成功上传后 获取上传信息
-                $arr_pic[] = $info->getSaveName();
-            } else {
-            // 上传失败获取错误信息
-                echo $file->getError();
+            $files = request()->file('image');
+            $arr_pic = [];
+            foreach($files as $file){
+            // 移动到框架应用根目录/public/uploads/ 目录下
+                $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
+
+                if($info){
+                // 成功上传后 获取上传信息
+                    $arr_pic[] = $info->getSaveName();
+                } else {
+                // 上传失败获取错误信息
+                    echo $file->getError();
+                }
+
             }
 
-        }
-        $class->shop_pictrue = json_encode($arr_pic);
-        $class->save();
 
-        $all = new Shop_all;
-        $all->class_id = $id;
-        $all->shop_name = $_POST['name'];
-        $all->shop_profile = $_POST['profile'];
-        $all->location = $_POST['location'];
-        $all->shop_price = $_POST['price'];
-        $all->user_id = $user_id;
-        $all->shop_pictrue = json_encode($arr_pic);
-        $all->schoolName = $schoolName;
-        $all->save();
-        $this->success('发布成功','/index/index/show');
+            $pic = json_encode($arr_pic);
+            $pic= str_replace('\\\\','/',$pic);
+
+            $class->shop_pictrue = $pic;
+            $class->save();
+
+            $all = new Shop_all;
+            $all->class_id = $id;
+            $all->shop_name = $_POST['name'];
+            $all->shop_profile = $_POST['profile'];
+            $all->location = $_POST['location'];
+            $all->shop_price = $_POST['price'];
+            $all->user_id = $user_id;
+            $all->shop_pictrue = $pic;
+            $all->schoolName = $schoolName;
+            $all->save();
+            $this->success('发布成功','/index/index/show');
+        }
+
     }
 
     /**
@@ -110,7 +123,7 @@ class Publish extends Auth
      */
     public function qiugou()
     {
-        $qiugou = Shop_qiugou::select();
+        $qiugou = Shop_qiugou::paginate(2);
         $big = Shop_class::select();
         $small = Shop_little_class::select();
         // var_dump($qiugou);
@@ -132,7 +145,7 @@ class Publish extends Auth
         $small = Shop_little_class::select();
 
         $time = time();
-        $all = Shop_all::where(['status' =>  1])->where(['schoolName' => $schoolName])->select();
+        $all = Shop_all::where(['status' =>  1])->where(['schoolName' => $schoolName])->order('create_time desc')->paginate(4);
         foreach ($all as $key => $value) {
             $pic = $value->shop_pictrue;
             $create_time = $value->create_time;
@@ -179,6 +192,6 @@ class Publish extends Auth
         $qiugou->qq = $_POST['qq'];
         $qiugou->user_id = $user_id;
         $qiugou->save();
-        return json(['status' => 1, 'msg' => '求购成功','redirect_url' => url('index/publish/publish_qiugou')]);
+        $this->success('发布成功','/index/publish/publish_qiugou');
     }
 }

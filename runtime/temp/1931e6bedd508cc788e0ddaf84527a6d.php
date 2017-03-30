@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"C:\wamp\www\second-hand\thinkphp\public/../application/index\view\auth\register.html";i:1490599206;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"C:\wamp\www\second-hand\thinkphp\public/../application/index\view\auth\register.html";i:1490857471;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -80,7 +80,7 @@
                   if (!checkUser(username)) {
                       $('#isusex').html('用户名应为3-15位,不能以数字开头');
                   }else{
-                      $('#isuse').html('用户名可用');
+                      $('#isusex').html('用户名可用');
                   }
                       }
             })
@@ -93,7 +93,7 @@
             if (!checkEmail(email)) {
                 $('#isemailx').html('邮箱格式不正确');
             }else{
-                $('#isemail').html('邮箱格式正确');
+                $('#isemailx').html('邮箱格式正确');
 
             }
         });
@@ -103,7 +103,7 @@
             if(!checkpassword(password)){
                 $('#ispasswordx').html('密码不少于6位');
             }else{
-                $('#ispassword').html('密码格式正确');
+                $('#ispasswordx').html('密码格式正确');
             }
         });
 
@@ -116,7 +116,7 @@
                 if(!checkpassword2(password2, password)){
                     $('#ispassword2x').html('两次密码输入不一致');
                 }else{
-                    $('#ispassword2').html('匹配成功');
+                    $('#ispassword2x').html('匹配成功');
                 }
             }
 

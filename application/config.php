@@ -17,7 +17,7 @@ return [
     // 应用命名空间
     'app_namespace' => 'app',
     // 应用调试模式
-    'app_debug' => true,
+    'app_debug' => false,
     // 应用Trace
     'app_trace' => true,
     // 应用模式状态
@@ -140,8 +140,8 @@ return [
 
     // 视图输出字符串内容替换
     'view_replace_str' => [
-            '__STATIC_URL__' => 'http://911.com/static',
-            '__URL__' => 'http://911.com'
+            '__STATIC_URL__' => 'http://think.bryantkobe.cn/static',
+            '__URL__' => 'http://think.bryantkobe.cn/static/admin/'
 
 
     ],
@@ -154,10 +154,10 @@ return [
     // +----------------------------------------------------------------------
 
     // 异常页面的模板文件
-    'exception_tmpl' => THINK_PATH . 'tpl' . DS . 'think_exception.tpl',
+    'exception_tmpl' => APP_PATH . 'index/view/public' . DS . 'sisisisi.html',
 
     // 错误显示信息,非调试模式有效
-    'error_message' => '页面错误！请稍后再试～',
+    'error_message' => APP_PATH . 'index/view/public' . DS . '404.html',
     // 显示错误信息
     'show_error_msg' => false,
     // 异常处理handle类 留空使用 \think\exception\Handle

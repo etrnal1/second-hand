@@ -23,7 +23,7 @@ return [
 
     // 视图输出字符串内容替换
     'view_replace_str' => [
-            '__STATIC_URL__' => 'http://911.com/static'
+            '__STATIC_URL__' => 'http://think.bryantkobe.cn/static'
 
     ],
     // 默认跳转页面对应的模板文件

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\auth\login.html";i:1490349454;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\auth\login.html";i:1490665912;}*/ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -33,6 +33,7 @@
           </svg>
           <input type="password" name="password" class="login__input pass" placeholder="密码"/>
         </div>
+        <font color="pink" size="3"><b>百度账号登陆:</b></font><div><a href="<?php echo $getcode_url; ?>"><img src="__STATIC_URL__/amaze/images/baidulogo1.jpg"></a></div>
         <button class="login__submit">登陆千寻</button>
         <span id="tips"></span>
         <p class="login__signup">还没有账户? &nbsp;<a href="<?php echo url('index/auth/register'); ?>">注册千寻账户</a></p>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:89:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\person\person.html";i:1490274690;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:89:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\person\person.html";i:1490706290;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -46,10 +46,10 @@
             </form>
             <div class="search-hots center ease2">
                 <span>热门：</span>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank">自行车</a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank">运动健身</a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank">教材</a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank">生活娱乐</a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=1" target="_blank">自行车</a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=2" target="_blank">手机电脑</a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=7" target="_blank">教材</a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=5" target="_blank">生活娱乐</a>
                             </div>
 
         </div>
@@ -66,7 +66,7 @@
                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;嗨,<?php echo \think\Session::get('username'); ?></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="<?php echo url('index/person/person'); ?>">个人中心</a></li>
-                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="<?php echo url('index/person/weather'); ?>" target="_blank">查看天气</a></li>
                         <li><a href="<?php echo url('index/auth/logout'); ?>">退出</a></li>
                         <!-- <li><a href="#">Separated link</a></li> -->
                       </ul>
@@ -96,7 +96,7 @@
                 </li>
                 <?php foreach($big as $value): ?>
                 <li class="category-1 catg">
-                        <a href="<?php echo url('index/index/one'); ?>" target="_blank">
+                        <a href="<?php echo url('index/index/one'); ?>?id=<?php echo $value->class_id; ?>" target="_blank">
                             <i class="nav-icons">
                                 <img src="__STATIC_URL__/amaze/picture/<?php echo $value->image; ?>" alt="校园代步"/>
                             </i>
@@ -108,7 +108,7 @@
                             <?php foreach($small as $v): if($v->class_id == $value->class_id): ?>
 
 
-                                            <a href="<?php echo url('index/index/one'); ?>?id={}" target="_blank"><?php echo $v->little_name; ?></a>
+                                            <a href="<?php echo url('index/index/one'); ?>?id=<?php echo $value->class_id; ?>" target="_blank"><?php echo $v->little_name; ?></a>
                                             <!-- <a href="<?php echo url('index/index/one'); ?>" target="_blank">电动车</a> -->
 
 
@@ -131,7 +131,7 @@
                     <li class="hover" id="one1" onMouseOver="setTab(&#39;one&#39;,1,5)">个人资料</li>
                     <li id="one2" onMouseOver="setTab(&#39;one&#39;,2,5)">我发布的商品</li>
                     <li id="one3" onMouseOver="setTab(&#39;one&#39;,3,5)">我的收藏</li>
-                    <li id="one4" onMouseOver="setTab(&#39;one&#39;,4,5)">消息中心</li>
+                    <li id="one4" onMouseOver="setTab(&#39;one&#39;,4,5)">我的预约</li>
                   </ul>
                 </div>
                 <script language="javascript">
@@ -155,32 +155,73 @@
                         <div>账号:&nbsp;&nbsp;<font color="blue" size="4"><b><?php echo $user->username; ?></b></font></div>
                         <div>基本信息</div>
                         <hr>
-                        <input type="text" style="display:inline;" name="">
+<!--                         <input type="text" style="display:inline;" name=""> -->
                         <div>邮箱:&nbsp;&nbsp;<font color="blue" size="4"><b><?php echo $user->email; ?></b></font></div>
                         <div>手机号:&nbsp;<font color="blue" size="4"><b><?php echo $user->phone; ?></b></font></div>
                         <div>qq:&nbsp;&nbsp;<font color="blue" size="4"><b><?php echo $user->qq; ?></b></font></div>
                     </div>
                 </div>
-                <div class="hover" id="con_one_2" style="display: none">我发布的商品
+                <div class="hover" id="con_one_2" style="display: none">
                     <div>
-                        <div>商品名称:</div>
-                        <div>商品价格:</div>
-                        <div>上架时间:</div>
-                        <div>下架时间:</div>
+                        <table border="1" width="600px">
+                        <tr>
+                            <div class="shopname"><th>商品名称</th></div>
+                            <div class="shopprice"><th>商品详情</th></div>
+                            <div class="createtime"><th>商品价格</th></div>
+                        </tr>
+                        <?php foreach($all as $info): ?>
+
+                            <tr>
+                                <div class="shopname"><th><?php echo $info['shop_name']; ?></th></div>
+                                <div class="shopprice"><th><?php echo $info['shop_profile']; ?></th></div>
+                                <div class="createtime"><th><?php echo $info['shop_price']; ?></th></div>
+                            </tr>
+
+                        <?php endforeach; ?>
+
+                    </table>
+
                     </div>
                 </div>
-                <div class="hover" id="con_one_3" style="display: none">我的收藏
-                    <?php foreach($collect as $info): ?>
+                <div class="hover" id="con_one_3" style="display: none">
+                    <table border="1" width="600px">
+                        <tr>
+                            <div class="shopname"><th>商品名称</th></div>
+                            <div class="shopprice"><th>商品详情</th></div>
+                            <div class="createtime"><th>商品价格</th></div>
+                        </tr>
+                        <?php foreach($collect as $info): ?>
 
-                        <div>商品名称:<?php echo $info['shop_name']; ?></div>
-                        <div>商品详情:<?php echo $info['shop_profile']; ?></div>
-                        <div>商品价格:<?php echo $info['shop_price']; ?></div>
+                            <tr>
+                                <div class="shopname"><th><?php echo $info['shop_name']; ?></th></div>
+                                <div class="shopprice"><th><?php echo $info['shop_profile']; ?></th></div>
+                                <div class="createtime"><th><?php echo $info['shop_price']; ?></th></div>
+                            </tr>
 
-                    <?php endforeach; ?>
+                        <?php endforeach; ?>
+
+                    </table>
 
 
                 </div>
-                <div class="hover" id="con_one_4" style="display: none">消息中心
+                <div class="hover" id="con_one_4" style="display: none">
+                    <table border="1" width="600px">
+                        <tr>
+                            <div class="shopname"><th>商品名称</th></div>
+                            <div class="shopprice"><th>商品详情</th></div>
+                            <div class="createtime"><th>商品价格</th></div>
+                        </tr>
+                        <?php foreach($yuyue as $info): ?>
+
+                            <tr>
+                                <div class="shopname"><th><?php echo $info['shop_id']; ?></th></div>
+
+                            </tr>
+
+                        <?php endforeach; ?>
+
+                    </table>
+
                 </div>
               </div>
               <div class="clear"></div>

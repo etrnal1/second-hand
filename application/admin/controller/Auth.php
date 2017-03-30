@@ -148,9 +148,10 @@ class Auth extends Controller
 
 	public function logut()
 	{
+       
+         // session::delete();
 
-
-		echo '退出成功';
+		// echo '退出成功';
 
 	}
 }

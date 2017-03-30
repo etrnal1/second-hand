@@ -64,7 +64,9 @@
               }, 1000);
             }else{
               alert(data.msg);
-              return false;
+              setTimeout(function(){
+                  location.href = '{:url("index/auth/login")}';
+              }, 1000);
             }
           }, 'JSON');
           // return false;

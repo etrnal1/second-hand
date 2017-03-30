@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\goods\goods.html";i:1490361726;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\goods\goods.html";i:1490717320;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -15,10 +15,49 @@
     <script type="text/javascript" src="__STATIC_URL__/amaze/js/bootstrap.js"></script>
     <link rel="stylesheet" type="text/css" href="__STATIC_URL__/amaze/css/bootstrap.css">
     <script type="text/javascript" src="__STATIC_URL__/amaze/js/jquery-1.12.4.js"></script>
+    <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
 
     <script>
     (function(){if(!/*@cc_on!@*/0)return;var e = "abbr,article,aside,audio,canvas,datalist,details,dialog,eventsource,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video".split(','),i=e.length;while(i--){document.createElement(e[i])}})()
     </script>
+    <style>
+
+    li {
+        list-style:none
+    }
+    img {
+        border:none
+    }
+    a {
+        text-decoration:none;
+    }
+    .apple a {
+        display:block;
+        text-decoration:none;
+    }
+    .apple,.aa {
+        width:90%;
+        height:50px;
+        overflow:hidden;
+        margin:30px auto;
+        border:1px solid #1B96EE;
+    }
+    .apple ul {
+        height:50px;
+    }
+    .apple a,.aa a {
+        width:100%;
+        height:50px;
+        line-height:50px;
+        text-indent:20px;
+        color:#1B96EE;
+    }
+    .aa {
+        word-wrap:break-word;
+        line-height:50px;
+        color:#1B96EE;
+    }
+    </style>
 
 </head>
 <body>
@@ -58,7 +97,7 @@
                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<嗨,<?php echo \think\Session::get('username'); ?></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="<?php echo url('index/person/person'); ?>">个人中心</a></li>
-                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="<?php echo url('index/person/weather'); ?>" target="_blank">查看天气</a></li>
                         <li><a href="<?php echo url('index/auth/logout'); ?>">退出</a></li>
 
                         <!-- <li><a href="#">Separated link</a></li> -->
@@ -109,7 +148,6 @@
                             <a href="<?php echo url('/index/Personshop/shop'); ?>" target="_blank">
                                 <div class="value">
                                     <span class="value-name"><?php echo $all->user_id; ?></span>
-                                    <img class="detail-grade" src="picture/ico_lv4.png" alt="等级显示"/>
                                 </div>
                             </a>
                         </li>
@@ -117,7 +155,7 @@
                         <li class="ershou-cert">
 
                             <div class="name"><span>预约状态</span></div>
-                            <input type="hidden" name="hidden" value="<?php echo $all->status; ?>">
+                            <input type="hidden" name="hidden" value="<?php echo $all->all_id; ?>">
                             <div class="value"><span><button class="yuYue">点击预约</button></span></div>
                         </li>
                         <?php else: ?>
@@ -142,7 +180,7 @@
                         <li class="ershou-time">
                             <div class="name"><span>发布时间</span></div>
                             <div class="value">
-                                <span class="real-time">今天</span>
+                                <span class="real-time"><?php echo $all->create_time; ?></span>
                             </div>
                         </li>
                     </ul>
@@ -171,10 +209,10 @@
             </div>
             <div class="ershou-desc">
                  <div class="desc clearfix">
-                    <a href="/profile/62080" target="_blank">
-                        <img id="user_ph" src="picture/avatar7.png"/>
+                    <a href="#">
+                        <img id="user_ph" src="__STATIC_URL__/amaze/picture/avatar7.png"/>
                     </a>
-                    <span id="user_cmt"><?php echo $all->shop_profile; ?></span>
+                    商品详情:<span id="user_cmt"><?php echo $all->shop_profile; ?></span>
                 </div>
             </div>
             <div class="comments">
@@ -206,6 +244,18 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="plnr">
+                <div>评论内容:</div>
+                <div class="apple">
+                    <ul class="ul">
+
+                    </ul>
+                </div>
+
+
+
+
             </div>
             <!--百度联盟广告-->
             <div class="comment-right">
@@ -252,10 +302,9 @@
         $('.comment-login1').click(function(){
             var comment = $('input[name=comment]').val();
             $.post('/index/Goods/comment/?id=<?php echo $all->all_id; ?>',{comment:comment},function(data){
-                if(data.status){
-                    alert(data.msg);
+                if(data){
+                    chaxun();
 
-                    location.href = '<?php echo url("/index/publish/publish_qiugou"); ?>';
 
                 }else{
                     alert(data.msg);
@@ -285,5 +334,30 @@
             },'JSON')
         })
     </script>
+
+    <script>
+    //滚动
+    function chaxun(){
+
+        $.post('/index/goods/chaxun/?id=<?php echo $all->all_id; ?>',{},function(data){
+            if(data.status){
+                $('.ul').html(data.result);
+            }
+
+        })
+    }
+    function autoScroll(obj) {
+        $(obj).find("ul").animate({
+            marginTop: "-39px"
+        }, 500, function() {
+            $(this).css({
+                marginTop: "0px"
+            }).find("li:first").appendTo(this);
+        })
+    }
+    $(function() {
+        setInterval('autoScroll(".apple")', 2000);
+
+    })</script>
 </body>
 </html>

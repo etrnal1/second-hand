@@ -1,11 +1,12 @@
 <?php
+namespace app\index\controller;
 /**
  * @Author: Marte
  * @Date:   2017-03-19 00:18:25
  * @Last Modified by:   Marte
- * @Last Modified time: 2017-03-27 13:43:34
+ * @Last Modified time: 2017-03-30 15:52:14
  */
-namespace app\index\controller;
+
 
 use app\index\model\User;
 use think\View;

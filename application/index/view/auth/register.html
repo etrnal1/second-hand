@@ -79,7 +79,7 @@
                   if (!checkUser(username)) {
                       $('#isusex').html('用户名应为3-15位,不能以数字开头');
                   }else{
-                      $('#isuse').html('用户名可用');
+                      $('#isusex').html('用户名可用');
                   }
                       }
             })
@@ -92,7 +92,7 @@
             if (!checkEmail(email)) {
                 $('#isemailx').html('邮箱格式不正确');
             }else{
-                $('#isemail').html('邮箱格式正确');
+                $('#isemailx').html('邮箱格式正确');
 
             }
         });
@@ -102,7 +102,7 @@
             if(!checkpassword(password)){
                 $('#ispasswordx').html('密码不少于6位');
             }else{
-                $('#ispassword').html('密码格式正确');
+                $('#ispasswordx').html('密码格式正确');
             }
         });
 
@@ -115,7 +115,7 @@
                 if(!checkpassword2(password2, password)){
                     $('#ispassword2x').html('两次密码输入不一致');
                 }else{
-                    $('#ispassword2').html('匹配成功');
+                    $('#ispassword2x').html('匹配成功');
                 }
             }
 
@@ -179,6 +179,9 @@
           }, 1000);
         }else{
           alert(data.msg);
+          setTimeout(function(){
+              location.href = '{:url("/index/auth/register")}';
+          }, 1000);
         }
       }, 'JSON');
 

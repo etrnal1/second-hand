@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:81:"C:\wamp\www\second-hand\thinkphp\public/../application/index\view\index\show.html";i:1490619449;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:81:"C:\wamp\www\second-hand\thinkphp\public/../application/index\view\index\show.html";i:1490852736;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -52,6 +52,7 @@
                             </div>
 
         </div>
+
         <?php if(!empty(\think\Session::get('username'))): ?>
         <div class="log-re ease2">
 
@@ -65,15 +66,15 @@
                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;嗨,<?php echo \think\Session::get('username'); ?></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="<?php echo url('index/person/person'); ?>">个人中心</a></li>
-                        <li><a href="#">我的收藏</a></li>
-                        <?php if(\think\Session::get('accesstoken')): ?>
-                        <li><a href="<?php echo $logout_url; ?>">退出</a></li>
-                        <?php else: ?>
+                        <li><a href="<?php echo url('index/person/weather'); ?>" target="_blank">查看天气</a></li>
+
                         <li><a href="<?php echo url('index/auth/logout'); ?>">退出</a></li>
-                        <?php endif; ?>
+
                         <!-- <li><a href="#">Separated link</a></li> -->
                       </ul>
                     </div>
+
+
                     <!-- </div> -->
                     <!-- <a href="/index/auth/logout"><div class="button" >退出</div></a> -->
         </div>
@@ -179,7 +180,7 @@
                         <a class="page-num " href="http://znufe.2shoujie.com/recent/pn7">7</a>
                         <a class="page-num " href="http://znufe.2shoujie.com/recent/pn8">8</a>
                                     <a class="page-arrow arrow-right" href="http://znufe.2shoujie.com/recent/pn2">下一页</a> -->
-                    </div>
+        </div>
     </div>
 </div>
 <div class="return-to-top"><a href=""></a></div>
@@ -243,55 +244,3 @@
 </body>
 </html>
 
-<!-- <!doctype html>
-<html lang="zh">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CSS3动态背景登录框代码 - 站长素材</title>
-<link rel="stylesheet" type="text/css" href="__STATIC_URL__/amaze/css/styles.css">
-</head>
-<body>
-<div class="htmleaf-container">
-  <div class="wrapper">
-    <div class="container">
-      <h1>Welcome</h1>
-
-      <form class="form">
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
-        <button type="submit" id="login-button">Login</button>
-      </form>
-    </div>
-
-    <ul class="bg-bubbles">
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
-  </div>
-</div>
-
-<script src="__STATIC_URL__/amaze/js/jquery-2.1.1.min.js" type="text/javascript"></script>
-<script>
-$('#login-button').click(function (event) {
-  event.preventDefault();
-  $('form').fadeOut(500);
-  $('.wrapper').addClass('form-success');
-});
-</script>
-
-<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';color:#000000">
-<p>适用浏览器：360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗. 不支持IE8及以下浏览器。</p>
-<p>来源：<a href="http://sc.chinaz.com/" target="_blank">站长素材</a></p>
-</div>
-</body>
-</html> -->

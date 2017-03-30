@@ -12,9 +12,9 @@ class Auth extends Controller
 {
 	private $api_key = 'a80294iyuO5PKPs9EcuO17GY';
     private $serect_key = 'pTHHVGBBeqMto2LGobdTEU0y0aQNDAXs';
-    private $redirect_url = 'http://911.com/index/auth/callback';
+    private $redirect_url = 'http://think.bryantkobe.cn/index/auth/callback';
     private $apibase_url = 'https://openapi.baidu.com/rest/2.0/';
-    private $logout = 'http://911.com/index/index/show';
+    private $logout = 'http://think.bryantkobe.cn/index/index/show';
 	protected $is_check_login = [''];
 
 	public function _initialize()
@@ -59,18 +59,17 @@ class Auth extends Controller
 	 */
 	public function doLogin()
 	{
-		// var_dump($_POST);
 		$info = User::where(['username' => input('post.username'), 'password' => md5(input('post.password'))])->where(['status' => 1])->find();
 		if($info){
 			Session::set('username',$info['username']);
             Session::set('user_id',$info['user_id']);
 			return json(['status' => 1, 'msg' => '登陆成功', 'redirect_url' => url('index/index/index') ]);
 		}else{
-			// $this->error('登录失败,fucking out');
+
 			return json(['status' => 0, 'msg' => '登陆失败', 'redirect_url' => url('index/auth/login') ]);
 		}
 
-        return $this->fetch();
+
 	}
 
     /**
@@ -97,9 +96,6 @@ class Auth extends Controller
 
             $uid = $user_res['uid'];
             $username = $user_res['uname'];
-            // var_dump($uid);
-            // var_dump($username);
-            // die();
             $result = User::where(['username' => $username])->find();
             if(!$result){
                 $user = new User;
@@ -153,13 +149,13 @@ class Auth extends Controller
 	{
 		$accesstoken = Session::get('accesstoken','think');
 		if($accesstoken){
-			$logout_url = "https://openapi.baidu.com/connect/2.0/logout?access_token=$accesstoken&next=http://911.com/index/index/show";
+			$logout_url = "https://openapi.baidu.com/connect/2.0/logout?access_token=$accesstoken&next=http://think.bryantkobe.cn/index/index/show";
 
 			session(null);
 			$this->redirect($logout_url);
 		} else {
 			session(null);
-			$this->redirect('/index/index/show');
+			$this->redirect('/index/index/index');
 		}
 
 
@@ -187,6 +183,7 @@ class Auth extends Controller
 	public function doRegister()
 	{
 		//定义验证规则
+        $ip = $_SERVER['REMOTE_ADDR'];
         $code = substr(md5(uniqid()),mt_rand(0,24),4);
 		$validate = new Validate([
 			'username' => 'require|max:25',
@@ -215,7 +212,7 @@ class Auth extends Controller
                 // $mail->setBcc("XXXXX"); //设置秘密抄送，多个秘密抄送，调用多次
                 $html = <<<DOC
             欢迎你{$data['username']}请
-            <a href="http://911.com/index/auth/active?code={$code}">激活</a>
+            <a href="http://think.bryantkobe.cn/index/auth/active?code={$code}">激活</a>
 DOC;
 
                 $mail->setMailInfo("激活码", $html);// 设置邮件主题、内容
@@ -259,9 +256,9 @@ DOC;
 
 		$result = Db::table('sh_user')->where('username',$username)->find();
 		if($result){
-				return json(['status' => 1, 'msg' => '用户名已存在']);
+				return   json(['status' => 1, 'msg' => '用户名已存在']);
 			}else{
-				return json(['status' => 0, 'msg' => '用户名可用']);
+				return   json(['status' => 0, 'msg' => '用户名可用']);
 
 			}
 	}

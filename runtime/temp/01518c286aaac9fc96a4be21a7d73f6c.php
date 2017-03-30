@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"C:\wamp\www\second-hand\thinkphp\public/../application/index\view\goods\goods.html";i:1490603358;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"C:\wamp\www\second-hand\thinkphp\public/../application/index\view\goods\goods.html";i:1490785236;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -97,7 +97,7 @@
                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<嗨,<?php echo \think\Session::get('username'); ?></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="<?php echo url('index/person/person'); ?>">个人中心</a></li>
-                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="<?php echo url('index/person/weather'); ?>" target="_blank">查看天气</a></li>
                         <li><a href="<?php echo url('index/auth/logout'); ?>">退出</a></li>
 
                         <!-- <li><a href="#">Separated link</a></li> -->
@@ -145,7 +145,7 @@
                         </li>
                         <li class="ershou-seller">
                             <div class="name"><span>卖家</span></div>
-                            <a href="<?php echo url('/index/Personshop/shop'); ?>" target="_blank">
+
                                 <div class="value">
                                     <span class="value-name"><?php echo $all->user_id; ?></span>
                                 </div>
@@ -186,12 +186,12 @@
                     </ul>
                     <div class="jiathis_style_32x32" style="margin-top: 25px;height:32px;line-height: 32px;margin-left: 25px;">
                         <span style="display: inline-block;float: left;font-size: 14px;color: #666;">分享到：</span>
-                        <a class="jiathis_button_qzone" title="分享到空间"><span class="jiathis_txt jtico jtico_qzone"></span></a>
-                        <a class="jiathis_button_tsina" title="分享到微博"><span class="jiathis_txt jtico jtico_tsina"></span></a>
-                        <a class="jiathis_button_tqq" title="分享到腾讯微博"><span class="jiathis_txt jtico jtico_tqq"></span></a>
-                        <a class="jiathis_button_weixin" title="分享到微信"><span class="jiathis_txt jtico jtico_weixin"></span></a>
-                        <a class="jiathis_button_renren" title="分享到人人网"><span class="jiathis_txt jtico jtico_renren"></span></a>
-                        <a id="goods_button_more" href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+                        <a class="jiathis_button_qzone" title="分享到空间"><span class="jtico_qzone"></span></a>
+                        <a class="jiathis_button_tsina" title="分享到微博"><span class="jtico_tsina"></span></a>
+                        <a class="jiathis_button_tqq" title="分享到腾讯微博"><span class="jtico_tqq"></span></a>
+                        <a class="jiathis_button_weixin" title="分享到微信"><span class="jtico_weixin"></span></a>
+                        <a class="jiathis_button_renren" title="分享到人人网"><span class="jtico_renren"></span></a>
+                        <a id="goods_button_more" href="http://www.jiathis.com/share" class="jiathis_separator" target="_blank"></a>
                     </div>
                     <script type="text/javascript" >
                         var jiathis_config={
@@ -203,7 +203,7 @@
                             hideMore:false
                         }
                     </script>
-                    <script type="text/javascript" src="js/jia.js" charset="utf-8"></script>
+                    <script type="text/javascript" src="__STATIC_URL__/amaze/js/jia.js" charset="utf-8"></script>
                     <div class="complain"><a href="javascript:void(0);" onclick="report();">&bull;&nbsp;&nbsp;&nbsp;&nbsp;举报&nbsp;&nbsp;&nbsp;&nbsp;&bull;</a></div>
                 </div>
             </div>
@@ -246,13 +246,13 @@
                 </div>
             </div>
             <div class="plnr">
+                <div>评论内容:</div>
                 <div class="apple">
                     <ul class="ul">
 
                     </ul>
                 </div>
-                <div>用户:</div>
-                <div>评论内容:</div>
+
 
 
 
@@ -301,6 +301,7 @@
     <script type="text/javascript">
         $('.comment-login1').click(function(){
             var comment = $('input[name=comment]').val();
+
             $.post('/index/Goods/comment/?id=<?php echo $all->all_id; ?>',{comment:comment},function(data){
                 if(data){
                     chaxun();

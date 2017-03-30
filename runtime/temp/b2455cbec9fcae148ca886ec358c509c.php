@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:93:"C:\wamp\www\second-hand\thinkphp\public/../application/index\view\publish\publish_qiugou.html";i:1490260971;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:93:"C:\wamp\www\second-hand\thinkphp\public/../application/index\view\publish\publish_qiugou.html";i:1490706334;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -34,7 +34,7 @@
             <img src="__STATIC_URL__/amaze/picture/2shoujie_web_title_qianxun.png" alt="中南财经政法大学最安全方便的校园二手市场"/>
         </a>
         <div class="search-box-wr ease2">
-            <form class="search-box center" action="/search" method="get">
+            <form class="search-box center" action="<?php echo url('/index/Goods/search'); ?>" method="post">
                 <button type="submit" class="search-submit">搜索</button>
                 <div class="input-wr">
                     <img class="search-icon" src="__STATIC_URL__/amaze/picture/search-icon_4.png"/>
@@ -45,10 +45,10 @@
             </form>
             <div class="search-hots center ease2">
                 <span>热门：</span>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="red"><b>自行车</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="red"><b>运动健身</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="red"><b>教材</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="red"><b>生活娱乐</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=1" target="_blank"><font color="#66666A"><b>自行车</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=2" target="_blank"><font color="#66666A"><b>手机电脑</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=7" target="_blank"><font color="#66666A"><b>教材</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=5" target="_blank"><font color="#66666A"><b>生活娱乐</b></font></a>
                             </div>
 
         </div>
@@ -65,7 +65,7 @@
                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;嗨,<?php echo \think\Session::get('username'); ?></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="<?php echo url('index/person/person'); ?>">个人中心</a></li>
-                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="<?php echo url('index/person/weather'); ?>" target="_blank">查看天气</a></li>
                         <li><a href="<?php echo url('index/auth/logout'); ?>">退出</a></li>
                         <!-- <li><a href="#">Separated link</a></li> -->
                       </ul>
@@ -90,12 +90,12 @@
                     <div>
                         <i class="nav-icons"></i>
                         <div id="college"><span><?php echo \think\Session::get('schoolname'); ?></span></div>
-                                        <a class="switch" href="http://www.2shoujie.com/">切换</a>
+                                        <a class="switch" href="<?php echo url('index/index/index'); ?>">切换</a>
                                     </div>
                 </li>
                 <?php foreach($big as $value): ?>
                 <li class="category-1 catg">
-                        <a href="<?php echo url('index/index/one'); ?>" target="_blank">
+                        <a href="<?php echo url('index/index/one'); ?>?id=<?php echo $value->class_id; ?>" target="_blank">
                             <i class="nav-icons">
                                 <img src="__STATIC_URL__/amaze/picture/<?php echo $value->image; ?>" alt="校园代步"/>
                             </i>
@@ -107,8 +107,8 @@
                             <?php foreach($small as $v): if($v->class_id == $value->class_id): ?>
 
 
-                                            <a href="<?php echo url('index/index/one'); ?>?id={}" target="_blank"><?php echo $v->little_name; ?></a>
-                                            <!-- <a href="<?php echo url('index/index/one'); ?>" target="_blank">电动车</a> -->
+                                            <a href="<?php echo url('index/index/one'); ?>?id=<?php echo $value->class_id; ?>" target="_blank"><?php echo $v->little_name; ?></a>
+
 
 
 
@@ -126,16 +126,16 @@
         <div class="neirong">
 
             <div>商品名称:</div>
-            <div><input type="text" name="name" value=""></div><br>
+            <div><input type="text" name="name" value="" style="width:300px;height:50px;" placeholder="最多25个字"></div><br>
             <div>商品描述:</div>
-            <div><input type="text" name="profile" vlaue=""></div><br>
+            <div><input type="text" name="profile" vlaue="" style="width:300px;height:50px;" placeholder="建议填写物品用途、新旧程度、原价等信息" ></div><br>
             <div>交易地点:</div>
-            <div><input type="text" name="location" value=""></div><br>
+            <div><input type="text" name="location" value="" style="width:300px;height:50px;" placeholder="宿舍、教学楼、食堂等" ></div><br>
             <div>期望价格:</div>
-            <div><input type="text" name="price" value=""></div><br>
+            <div><input type="text" name="price" value="" style="width:300px;height:50px;" placeholder="最多25个字"></div><br>
             联系方式：
             <div>手机号:</div>
-            <div><input type="text" name="phone" value=""></div><br>
+            <div><input type="text" name="phone" id="phone" value=""></div><br>
             <div>QQ:</div>
             <div><input type="text" name="qq" value=""></div>
             <input type="submit" value="求购" class="submit"  size="15" style="width:100px; height:50px;" />
@@ -222,13 +222,20 @@
             if(data.status){
                 alert(data.msg);
 
-                  location.href = '<?php echo url("/index/publish/publish_qiugou"); ?>';
-
             }else{
               alert(data.msg);
             }
           }, 'JSON');
         })
     </script>
+    <script type="text/javascript">
+        $('#phone').blur(function(){
+            var phone = $('#phone').val();
+            $.post('/index/message',{phone:phone},function(){
+
+            })
+        })
+    </script>
+
 </body>
 </html>

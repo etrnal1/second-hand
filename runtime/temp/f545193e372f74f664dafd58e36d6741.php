@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"C:\wamp\www\second-hand\thinkphp\public/../application/index\view\index\index.html";i:1490369420;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:82:"C:\wamp\www\second-hand\thinkphp\public/../application/index\view\index\index.html";i:1490843549;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -111,13 +111,6 @@
 	    $('.sub').click(function(){
 	        var schoolName = $('select[name=schoolName]').val();
 	        $.post($('form').attr('action'), schoolName, function(data){
-	        if(data.status){
-	            setTimeout(function(){
-	               location.href = '<?php echo url("index/index/show"); ?>';
-	            }, 1000);
-	        }else{
-	            alert(data.msg);
-	        }
 	        }, 'JSON');
 	    })
 	</script>

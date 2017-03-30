@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:90:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\publish\qiugou.html";i:1490340996;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:90:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\publish\qiugou.html";i:1490716130;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -19,7 +19,51 @@
     <script>
     (function(){if(!/*@cc_on!@*/0)return;var e = "abbr,article,aside,audio,canvas,datalist,details,dialog,eventsource,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,time,video".split(','),i=e.length;while(i--){document.createElement(e[i])}})()
     </script>
+    <style>
 
+        .center .qiugou .qiugouname{
+            height:20px;
+            width:100px;
+            position:absolute;
+            margin-top:60px;
+            margin-left:200px;
+        }
+        .center .qiugou .qiugouprofile{
+            height:60px;
+            width:300px;
+            position:absolute;
+            margin-top:80px;
+            margin-left:200px;
+        }
+        .center .qiugou .qiugouprice{
+            height:20px;
+            width:100px;
+            position:absolute;
+            margin-top:60px;
+            margin-left:400px;
+        }
+        .center .qiugou .qiugoulocal{
+            height:20px;
+            width:100px;
+            position:absolute;
+            margin-top:140px;
+            margin-left:200px;
+        }
+        .center .qiugou .qiugouphone{
+            height:20px;
+            width:100px;
+            position:absolute;
+            margin-top:140px;
+            margin-left:400px;
+        }
+        .center .qiugou .qiugouqq{
+            height:20px;
+            width:100px;
+            position:absolute;
+            margin-top:140px;
+            margin-left:500px;
+        }
+    </style>
 </head>
 <body>
     <header class="ease2">
@@ -45,10 +89,10 @@
             </form>
             <div class="search-hots center ease2">
                 <span>热门：</span>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>自行车</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>运动健身</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>教材</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>生活娱乐</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=1" target="_blank"><font color="#66666A"><b>自行车</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=2" target="_blank"><font color="#66666A"><b>手机电脑</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=7" target="_blank"><font color="#66666A"><b>教材</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=5" target="_blank"><font color="#66666A"><b>生活娱乐</b></font></a>
                             </div>
 
         </div>
@@ -65,7 +109,7 @@
                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;嗨,<?php echo \think\Session::get('username'); ?></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="<?php echo url('index/person/person'); ?>">个人中心</a></li>
-                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="<?php echo url('index/person/weather'); ?>" target="_blank">查看天气</a></li>
                         <li><a href="<?php echo url('index/auth/logout'); ?>">退出</a></li>
                         <!-- <li><a href="#">Separated link</a></li> -->
                       </ul>
@@ -90,12 +134,12 @@
                     <div>
                         <i class="nav-icons"></i>
                         <div id="college"><span><?php echo \think\Session::get('schoolname'); ?></span></div>
-                                        <a class="switch" href="http://www.2shoujie.com/">切换</a>
+                                        <a class="switch" href="<?php echo url('index/index/index'); ?>">切换</a>
                                     </div>
                 </li>
                 <?php foreach($big as $value): ?>
                 <li class="category-1 catg">
-                        <a href="<?php echo url('index/index/one'); ?>" target="_blank">
+                        <a href="<?php echo url('index/index/one'); ?>?id=<?php echo $value->class_id; ?>" target="_blank">
                             <i class="nav-icons">
                                 <img src="__STATIC_URL__/amaze/picture/<?php echo $value->image; ?>" alt="校园代步"/>
                             </i>
@@ -107,8 +151,7 @@
                             <?php foreach($small as $v): if($v->class_id == $value->class_id): ?>
 
 
-                                            <a href="<?php echo url('index/index/one'); ?>?id={}" target="_blank"><?php echo $v->little_name; ?></a>
-                                            <!-- <a href="<?php echo url('index/index/one'); ?>" target="_blank">电动车</a> -->
+                                            <a href="<?php echo url('index/index/one'); ?>?id=<?php echo $value->class_id; ?>" target="_blank"><?php echo $v->little_name; ?></a>
 
 
 
@@ -123,20 +166,20 @@
         </nav>
     <div class="container">
     <div class="main center">
-            求购内容:
-            <div>
-                <div>
-                    <?php foreach($qiugou as $qg): ?>
-                    <div>[求购]<?php echo $qg->shop_name; ?></div>
-                    <div>商品详情:<?php echo $qg->shop_profile; ?></div>
-                    <div>商品价格:￥<?php echo $qg->shop_price; ?></div>
-                    <div>交易地点:<?php echo $qg->location; ?></div>
-                    <div>手机号:&nbsp;<?php echo $qg->phone; ?></div>
-                    <div>qq:&nbsp;&nbsp;<?php echo $qg->qq; ?></div>
-                    <?php endforeach; ?>
+            <div><img src="__STATIC_URL__/amaze/images/want-title.png"></div>
 
-                </div>
+            <div class="qiugou">
+                <?php foreach($qiugou as $qg): ?>
+                    <div class="qiugouname">[求购]<?php echo $qg->shop_name; ?></div>
+                    <div class="qiugouprofile">商品详情:<?php echo $qg->shop_profile; ?></div>
+                    <div class="qiugouprice">商品价格:￥<?php echo $qg->shop_price; ?></div>
+                    <div class="qiugoulocal">交易地点:<?php echo $qg->location; ?></div>
+                    <div class="qiugouphone">手机号:&nbsp;<?php echo $qg->phone; ?></div>
+                    <div class="qiugouqq">qq:&nbsp;&nbsp;<?php echo $qg->qq; ?></div>
+                <?php endforeach; ?>
             </div>
+
+
 
     </div>
 </div>

@@ -100,7 +100,7 @@
                 <ul class="items clearfix">
                     {if !empty($shop)}
                         <li class="item">
-                            <a href="{:url('index/Goods/goods')}?id={$shop->all_id}" class="img" target="_blank"><img src="http://911.com/uploads/{$shop->shop_pictrue[0]}" /></a>
+                            <a href="{:url('index/Goods/goods')}?id={$shop->all_id}" class="img" target="_blank"><img src="http://think.bryantkobe.cn/uploads/{$shop->shop_pictrue[0]}" /></a>
                             <div class="info">
                                 <div class="price">{$shop->shop_price}</div><!--价格-->
                                 <div class="name">
@@ -113,7 +113,7 @@
                     {else}
                         <li class="item_sorry">
                         <font color="black">抱歉:您所要寻找的</font> <font color="red">"{$class_id}"</font> <font color="black">未找到</font>
-                        <a href="{:url('index/index/show')}" class="img" target="_blank"><img src="http://911.com/static/amaze/picture/sorry.jpg" /></a>
+                        <a href="{:url('index/index/show')}" class="img" target="_blank"><img src="http://think.bryantkobe.cn/static/amaze/picture/sorry.jpg" /></a>
                         </li>
                     {/if}
 

@@ -19,6 +19,7 @@ use think\Db;
 
 class User extends Controller
 {
+	
 
 
 
@@ -83,52 +84,42 @@ class User extends Controller
 
 }
 
-//更新用户的密码
+//更新用户的密码 ,修改用户的密码
 public function upd()
 {
-
-
-	//$data = md5(input('post.repass'));
-	//dump($data);
-
  //获取用户的新密码 ,加密存进数据库
       $npwd = md5(input('post.repass'));
-
-    //  dump(npwd);
-
-
-       //更新语句
+ // dump(npwd);
+//更新语句
        $id  = input('session.id');
+     //$data =  Admin::updata(['id'=>$id,'password'=>$npwd]);
+     //需要更新的是管理员表
+       $user = new Admin;
+//save方法第二个参数为更新条件
 
-      //$data =  Admin::updata(['id'=>$id,'password'=>$npwd]);
-      $data = Admin::where('id', $id)
+
+     $data =   $user->where('id', $id)
 ->update(['password' => $npwd]);
+      if($data ==1){
+      	$res  = true;
 
-    // $data =  Admin::where(['id'=>$id])->updata(['password'=>$npwd]);
 
-      //dump($data);
-
-     // die();
-
-      if($data){
-
-      	return json_encode(['code'=>'1','tips'=>'修改成功']);
       }else{
 
-
-      	return json_encode(['code'=>'0','tips'=>'修改失败']);
-
-
+      	$res =false;
       }
+ //dump($data);
+	 if($res){
+        return json(['code'=>1,'msg'=>'修改成功']);
+      }else{
+          return json(['code'=>0,'msg'=>'修改失败']);
+	}
 
 
 
 }
-		
 
 		//管理用户
-		
-
 		public function  guanli()
 		{
 
@@ -138,43 +129,24 @@ public function upd()
              $list = Suer::where('user_id','>','0')->paginate(2);
             // 把分页数据赋值给模板变量list
             $this->assign('list', $list);
-
-           // dump($list);
+             // dump($list);
              // 渲染模板输出
              return $this->fetch();
-
-	 		
-		}
+           }
   //删除用户
 		public function shanchu()
 		{
 
 			//获取Id
-
 			$id  = input('post.id');
-
 			//删除语句
 			$result = Suer::where('user_id',$id)->delete();
-
-			//返回json 数据
-			
-			if($result){
+              //返回json 数据
+            if($result){
 				return json_encode(['code' =>1,'tips'=>'删除成功']);
 
 			}else{
-
 				return json_encode(['code'=>0]);
-
-
 			}
-
-
-			
 		}
-
-
-
-		
-	
 }
- 

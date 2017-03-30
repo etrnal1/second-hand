@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\index\one.html";i:1490271530;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:85:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\index\one.html";i:1490706262;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -59,7 +59,7 @@
                         <li>嗨,<?php echo \think\Session::get('username'); ?></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="<?php echo url('index/person/person'); ?>">个人中心</a></li>
-                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="<?php echo url('index/person/weather'); ?>" target="_blank">查看天气</a></li>
                         <li><a href="<?php echo url('index/auth/logout'); ?>">退出</a></li>
 
                         <!-- <li><a href="#">Separated link</a></li> -->
@@ -80,7 +80,7 @@
         <div class="main center">
             <div class="rank-by clearfix" data-cur="1">
                 <div class="rank-title-wr">
-                    <a href="/category4/time/pn1">
+                    <!-- <a href="/category4/time/pn1">
                         <div class="rank-title default" data-rank="1">时间</div>
                     </a>
                     <a href="/category4/credit/pn1">
@@ -92,243 +92,34 @@
                                             </a>
                     <a href="/category4/hot/pn1">
                         <div class="rank-title hot" data-rank="5">热度</div>
-                    </a>
+                    </a> -->
                 </div>
                 <div class="wave ease2"></div>
             </div>
             <div class="item-list">
                 <ul class="items clearfix">
-                                        <li class="item">
-<!--                         <a href="/goods/180563.html" class="img" target="_blank"><img src="picture/8b2536feeddc406894664b65be715364.gif" alt="个人闲置出手苹果6，国行64g"/></a>
-                        <div class="info">
-                            <div class="price">1600</div>
-                            <div class="name"><a href="/goods/180563.html" target="_blank">个人闲置出手苹果6，国行64g</a></div>
-                            <div class="department"><span>财政税务07级(未认证)</span></div>
-                            <div class="place"><span>可当面可平台验机</span></div>
-                        </div> -->
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/180209.html" class="img" target="_blank"><img src="picture/a5a0e8680bc74430a0f4736999b36125.gif" alt="Lgg3"/></a>
-                        <div class="info">
-                            <div class="price">280</div>
-                            <div class="name"><a href="/goods/180209.html" target="_blank">Lgg3</a></div>
-                            <div class="department"><span>生命科学13级(未认证)</span></div>
-                            <div class="place"><span>校内</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/180021.html" class="img" target="_blank"><img src="picture/ed0a990a3d254383a616e7d3ba70d146.gif" alt="国行64g苹果6"/></a>
-                        <div class="info">
-                            <div class="price">2180</div>
-                            <div class="name"><a href="/goods/180021.html" target="_blank">国行64g苹果6</a></div>
-                            <div class="department"><span>其它院系15级(未认证)</span></div>
-                            <div class="place"><span>校内</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/179971.html" class="img" target="_blank"><img src="picture/c2aea930f35941f1b47255a0f5353f88.gif" alt="iPhone 6自用国行保修期内64g可验机试用"/></a>
-                        <div class="info">
-                            <div class="price">1600</div>
-                            <div class="name"><a href="/goods/179971.html" target="_blank">iPhone 6自用国行保修期内64g可验机试用</a></div>
-                            <div class="department"><span>信息管理学院12级(未认证)</span></div>
-                            <div class="place"><span>认证用户✅</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/179955.html" class="img" target="_blank"><img src="picture/4dfa0b84585042b98c8dad7acbb81342.gif" alt="苹果6自用64g未过保成色新"/></a>
-                        <div class="info">
-                            <div class="price">1800</div>
-                            <div class="name"><a href="/goods/179955.html" target="_blank">苹果6自用64g未过保成色新</a></div>
-                            <div class="department"><span>上海高级金融学院14级(未认证)</span></div>
-                            <div class="place"><span>可平台验机</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/179840.html" class="img" target="_blank"><img src="picture/90c6e83afaf24a2eb3f1ec72d71de7e8.gif" alt="低价出iphone5s"/></a>
-                        <div class="info">
-                            <div class="price">720</div>
-                            <div class="name"><a href="/goods/179840.html" target="_blank">低价出iphone5s</a></div>
-                            <div class="department"><span>园艺林学13级(未认证)</span></div>
-                            <div class="place"><span>华中农业大学</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/179224.html" class="img" target="_blank"><img src="picture/53cbc49c198041018de249c4acf6e800.gif" alt="是是是"/></a>
-                        <div class="info">
-                            <div class="price">111</div>
-                            <div class="name"><a href="/goods/179224.html" target="_blank">是是是</a></div>
-                            <div class="department"><span>中文15级(未认证)</span></div>
-                            <div class="place"><span>是 </span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/178586.html" class="img" target="_blank"><img src="picture/android_1486583340883_17102357.jpg" alt="苹果5s 九成新650元 低价出售"/></a>
-                        <div class="info">
-                            <div class="price">650</div>
-                            <div class="name"><a href="/goods/178586.html" target="_blank">苹果5s 九成新650元 低价出售</a></div>
-                            <div class="department"><span>上海高级金融学院12级(未认证)</span></div>
-                            <div class="place"><span>随意</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/178250.html" class="img" target="_blank"><img src="picture/451d9de657e843bd8a796ea2aa353eae.gif" alt="iPhone6配件发票齐全自用转让64G"/></a>
-                        <div class="info">
-                            <div class="price">1600</div>
-                            <div class="name"><a href="/goods/178250.html" target="_blank">iPhone6配件发票齐全自用转让64G</a></div>
-                            <div class="department"><span>护理学院09级(未认证)</span></div>
-                            <div class="place"><span>可以验机交易</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/177968.html" class="img" target="_blank"><img src="picture/android_1484039838411_162248.jpg" alt="高仿苹果5s,"/></a>
-                        <div class="info">
-                            <div class="price">600</div>
-                            <div class="name"><a href="/goods/177968.html" target="_blank">高仿苹果5s,</a></div>
-                            <div class="department"><span>会计13级(未认证)</span></div>
-                            <div class="place"><span>图书馆</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/177319.html" class="img" target="_blank"><img src="picture/a69cd465cf334f249dfb7f0386aa99bf.gif" alt="二手手机1000元以下"/></a>
-                        <div class="info">
-                            <div class="price">12</div>
-                            <div class="name"><a href="/goods/177319.html" target="_blank">二手手机1000元以下</a></div>
-                            <div class="department"><span>WTO学院16级(未认证)</span></div>
-                            <div class="place"><span>地方</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/177342.html" class="img" target="_blank"><img src="picture/0c4c3ce6997944ec8735225873f2f3f4.gif" alt="招兼职"/></a>
-                        <div class="info">
-                            <div class="price">1</div>
-                            <div class="name"><a href="/goods/177342.html" target="_blank">招兼职</a></div>
-                            <div class="department"><span>建筑系13级(未认证)</span></div>
-                            <div class="place"><span>宿舍</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/177255.html" class="img" target="_blank"><img src="picture/19dc203480974198999f861fa181af5b.gif" alt="找兼职。购物省钱。。。。"/></a>
-                        <div class="info">
-                            <div class="price">1</div>
-                            <div class="name"><a href="/goods/177255.html" target="_blank">找兼职。购物省钱。。。。</a></div>
-                            <div class="department"><span>建筑系13级(未认证)</span></div>
-                            <div class="place"><span>宿舍</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/177207.html" class="img" target="_blank"><img src="picture/0404fe2c729046a59365b9d635864fdd.gif" alt="Iphone6国行金色64G原装配件国美专柜购买带发票"/></a>
-                        <div class="info">
-                            <div class="price">1520</div>
-                            <div class="name"><a href="/goods/177207.html" target="_blank">Iphone6国行金色64G原装配件国美专柜购买带发票</a></div>
-                            <div class="department"><span>未认证用户</span></div>
-                            <div class="place"><span>哪里都行</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/177129.html" class="img" target="_blank"><img src="picture/34c130021e2b42ffb27f8fa709cf5e7e.gif" alt="收苹果手机"/></a>
-                        <div class="info">
-                            <div class="price">50000</div>
-                            <div class="name"><a href="/goods/177129.html" target="_blank">收苹果手机</a></div>
-                            <div class="department"><span>法律12级(未认证)</span></div>
-                            <div class="place"><span>随意</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/176704.html" class="img" target="_blank"><img src="picture/bd2e5b0185e74055a26b795d612d1dff.gif" alt="自用iPhone5s土豪金64g转手急"/></a>
-                        <div class="info">
-                            <div class="price">800</div>
-                            <div class="name"><a href="/goods/176704.html" target="_blank">自用iPhone5s土豪金64g转手急</a></div>
-                            <div class="department"><span>人文学院16级(未认证)</span></div>
-                            <div class="place"><span>，</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/175916.html" class="img" target="_blank"><img src="picture/dafc65042a5c495d91b302d93a4ee2c3.gif" alt="全新小米移动电源10400毫安"/></a>
-                        <div class="info">
-                            <div class="price">51</div>
-                            <div class="name"><a href="/goods/175916.html" target="_blank">全新小米移动电源10400毫安</a></div>
-                            <div class="department"><span>未认证用户</span></div>
-                            <div class="place"><span>财大，其他地方可以商量</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/175725.html" class="img" target="_blank"><img src="picture/3b66208f75fb48468c90611288dad109.gif" alt="iPhone5s"/></a>
-                        <div class="info">
-                            <div class="price">600</div>
-                            <div class="name"><a href="/goods/175725.html" target="_blank">iPhone5s</a></div>
-                            <div class="department"><span>法律16级(未认证)</span></div>
-                            <div class="place"><span>任意方式 微信</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/175724.html" class="img" target="_blank"><img src="picture/c2ceb872438f442f941e322b1f8f7c5e.gif" alt="iPhone6"/></a>
-                        <div class="info">
-                            <div class="price">1300</div>
-                            <div class="name"><a href="/goods/175724.html" target="_blank">iPhone6</a></div>
-                            <div class="department"><span>法律16级(未认证)</span></div>
-                            <div class="place"><span>任意方式 微信 QQ</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/175659.html" class="img" target="_blank"><img src="picture/45821fc33925489398c1b2009e41a4bc.gif" alt="小米2A"/></a>
-                        <div class="info">
-                            <div class="price">150</div>
-                            <div class="name"><a href="/goods/175659.html" target="_blank">小米2A</a></div>
-                            <div class="department"><span>金融13级(未认证)</span></div>
-                            <div class="place"><span>武汉</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/175369.html" class="img" target="_blank"><img src="picture/android_1479378658098_9100079.jpg" alt="苹果7"/></a>
-                        <div class="info">
-                            <div class="price">1500</div>
-                            <div class="name"><a href="/goods/175369.html" target="_blank">苹果7</a></div>
-                            <div class="department"><span>公共安全与管理学院08级(未认证)</span></div>
-                            <div class="place"><span>广东</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/175341.html" class="img" target="_blank"><img src="picture/698bda6645e74f1dba2ec46b92250705.gif" alt="99新小米5高配64g黑色出售"/></a>
-                        <div class="info">
-                            <div class="price">1500</div>
-                            <div class="name"><a href="/goods/175341.html" target="_blank">99新小米5高配64g黑色出售</a></div>
-                            <div class="department"><span>软件13级(未认证)</span></div>
-                            <div class="place"><span>校内</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/175235.html" class="img" target="_blank"><img src="picture/android_1479189483790_142483.jpg" alt="九九成新华硕飞马手机"/></a>
-                        <div class="info">
-                            <div class="price">200</div>
-                            <div class="name"><a href="/goods/175235.html" target="_blank">九九成新华硕飞马手机</a></div>
-                            <div class="department"><span>外国语10级(未认证)</span></div>
-                            <div class="place"><span>南湖校区</span></div>
-                        </div>
-                    </li>
-                                        <li class="item">
-                        <a href="/goods/174794.html" class="img" target="_blank"><img src="picture/5b5eaf1ef4e54099931b7d04bdf907c2.gif" alt="招兼职，加微信Tenfu01，备注兼职"/></a>
-                        <div class="info">
-                            <div class="price">1</div>
-                            <div class="name"><a href="/goods/174794.html" target="_blank">招兼职，加微信Tenfu01，备注兼职</a></div>
-                            <div class="department"><span>建筑系13级(未认证)</span></div>
-                            <div class="place"><span>宿舍</span></div>
-                        </div>
-                    </li>
-                                        <li class="item fixed"></li>
-                    <li class="item fixed"></li>
-                    <li class="item fixed"></li>
+                    <?php if(!empty($shop)): ?>
+                        <li class="item">
+                            <a href="<?php echo url('index/Goods/goods'); ?>?id=<?php echo $shop->all_id; ?>" class="img" target="_blank"><img src="http://911.com/uploads/<?php echo $shop->shop_pictrue[0]; ?>" /></a>
+                            <div class="info">
+                                <div class="price"><?php echo $shop->shop_price; ?></div><!--价格-->
+                                <div class="name">
+                                    <a href="<?php echo url('index/Goods/goods'); ?>?id=<?php echo $shop->all_id; ?>" target="_blank"><?php echo $shop->shop_name; ?></a>
+                                </div>
+                                <div class="department"><span>临床11级(未认证)</span></div>
+                                <div class="place"><span>全校</span></div>
+                            </div>
+                        </li>
+                    <?php else: ?>
+                        <li class="item_sorry">
+                        <font color="black">抱歉:您所要寻找的</font> <font color="red">"<?php echo $class_id; ?>"</font> <font color="black">未找到</font>
+                        <a href="<?php echo url('index/index/show'); ?>" class="img" target="_blank"><img src="http://911.com/static/amaze/picture/sorry.jpg" /></a>
+                        </li>
+                    <?php endif; ?>
+
                 </ul>
             </div>
-            <div class="pages">
-                                                <a class="page-num cur" href="/category4/time/pn1">1</a>
-                                <a class="page-num " href="/category4/time/pn2">2</a>
-                                <a class="page-num " href="/category4/time/pn3">3</a>
-                                <a class="page-num " href="/category4/time/pn4">4</a>
-                                <a class="page-num " href="/category4/time/pn5">5</a>
-                                <a class="page-num " href="/category4/time/pn6">6</a>
-                                <a class="page-num " href="/category4/time/pn7">7</a>
-                                                <a class="page-arrow arrow-right" href="/category4/time/pn2">下一页</a>
-                            </div>
+
         </div>
     </div>
     <footer>

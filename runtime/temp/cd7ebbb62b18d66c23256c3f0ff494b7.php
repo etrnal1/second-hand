@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:90:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\publish\newest.html";i:1490340442;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:90:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\publish\newest.html";i:1490706314;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -45,10 +45,10 @@
             </form>
             <div class="search-hots center ease2">
                 <span>热门：</span>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>自行车</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>运动健身</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>教材</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>生活娱乐</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=1" target="_blank"><font color="#66666A"><b>自行车</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=2" target="_blank"><font color="#66666A"><b>手机电脑</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=7" target="_blank"><font color="#66666A"><b>教材</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=5" target="_blank"><font color="#66666A"><b>生活娱乐</b></font></a>
                             </div>
 
         </div>
@@ -65,7 +65,7 @@
                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;嗨,<?php echo \think\Session::get('username'); ?></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="<?php echo url('index/person/person'); ?>">个人中心</a></li>
-                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="<?php echo url('index/person/weather'); ?>" target="_blank">查看天气</a></li>
                         <li><a href="<?php echo url('index/auth/logout'); ?>">退出</a></li>
                         <!-- <li><a href="#">Separated link</a></li> -->
                       </ul>
@@ -90,25 +90,24 @@
                     <div>
                         <i class="nav-icons"></i>
                         <div id="college"><span><?php echo \think\Session::get('schoolname'); ?></span></div>
-                                        <a class="switch" href="http://www.2shoujie.com/">切换</a>
+                                        <a class="switch" href="<?php echo url('index/index/index'); ?>">切换</a>
                                     </div>
                 </li>
                 <?php foreach($big as $value): ?>
                 <li class="category-1 catg">
-                        <a href="<?php echo url('index/index/one'); ?>" target="_blank">
+                        <a href="<?php echo url('index/index/one'); ?>?id=<?php echo $value->class_id; ?>" target="_blank">
                             <i class="nav-icons">
                                 <img src="__STATIC_URL__/amaze/picture/<?php echo $value->image; ?>" alt="校园代步"/>
                             </i>
                             <h3><?php echo $value->class_name; ?></h3>
-                            <!-- <h3>校园代步</h3> -->
+
                         </a>
                     <div class="sub-nav">
                         <span >
                             <?php foreach($small as $v): if($v->class_id == $value->class_id): ?>
 
 
-                                            <a href="<?php echo url('index/index/one'); ?>?id={}" target="_blank"><?php echo $v->little_name; ?></a>
-                                            <!-- <a href="<?php echo url('index/index/one'); ?>" target="_blank">电动车</a> -->
+                                            <a href="<?php echo url('index/index/one'); ?>?id=<?php echo $value->class_id; ?>" target="_blank"><?php echo $v->little_name; ?></a>
 
 
 
@@ -131,7 +130,30 @@
                 <li><a href="<?php echo url('index/notice/phone'); ?>" target="_blank">购买二手iPhone注意事项</a></li>
             </ul>
         </div>
-        111等待遍历
+        <div class="item-list">
+            <ul class="items clearfix">
+                <?php foreach($all as $shop): ?>
+
+                <li class="item">
+
+                    <a href="<?php echo url('index/Goods/goods'); ?>?id=<?php echo $shop->all_id; ?>" class="img" target="_blank"><img src="http://911.com/uploads/<?php echo $shop->shop_pictrue[0]; ?>" /></a>
+
+                    <div class="info">
+                        <div class="price"><?php echo $shop->shop_price; ?></div><!--价格-->
+                        <div class="name">
+                            <a href="<?php echo url('index/Goods/goods'); ?>?id=<?php echo $shop->all_id; ?>" target="_blank"><?php echo $shop->shop_name; ?></a>
+                        </div>
+                        <div class="department"><span><?php echo $shop->shop_profile; ?></span></div>
+                    </div>
+
+                </li>
+                <?php endforeach; ?>
+
+                 <li class="item fixed"></li>
+                <li class="item fixed"></li>
+                <li class="item fixed"></li>
+            </ul>
+        </div>
 
     </div>
 </div>

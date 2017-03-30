@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\index\index.html";i:1490369419;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\index\index.html";i:1490369420;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh">
 <head>

@@ -1,4 +1,4 @@
-<!doctype html>
+ <!doctype html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
@@ -29,7 +29,7 @@
         }
         .center .qiugou .qiugouprofile{
             height:60px;
-            width:300px;
+            width:100px;
             position:absolute;
             margin-top:80px;
             margin-left:200px;
@@ -50,7 +50,7 @@
         }
         .center .qiugou .qiugouphone{
             height:20px;
-            width:100px;
+            width:200px;
             position:absolute;
             margin-top:140px;
             margin-left:400px;
@@ -60,7 +60,7 @@
             width:100px;
             position:absolute;
             margin-top:140px;
-            margin-left:500px;
+            margin-left:700px;
         }
     </style>
 </head>
@@ -168,23 +168,41 @@
             </ul>
         </nav>
     <div class="container">
-    <div class="main center">
-            <div><img src="__STATIC_URL__/amaze/images/want-title.png"></div>
 
-            <div class="qiugou">
+    <div class="main center">
+            <div class="item-list">
+            <ul class="items clearfix">
+            <div><img src="__STATIC_URL__/amaze/images/want-title.png"></div>
                 {foreach $qiugou as $qg}
-                    <div class="qiugouname">[求购]{$qg->shop_name}</div>
-                    <div class="qiugouprofile">商品详情:{$qg->shop_profile}</div>
-                    <div class="qiugouprice">商品价格:￥{$qg->shop_price}</div>
-                    <div class="qiugoulocal">交易地点:{$qg->location}</div>
-                    <div class="qiugouphone">手机号:&nbsp;{$qg->phone}</div>
-                    <div class="qiugouqq">qq:&nbsp;&nbsp;{$qg->qq}</div>
+
+                <li class="item1">
+
+                    <div class="qiugou">
+
+                    <div class="qiugouname"><font color="red" size="3">[求购]</font>{$qg->shop_name}</div>
+                    <div class="qiugouprofile"><font color="red" size="3">商品详情:</font>{$qg->shop_profile}</div>
+                    <div class="qiugouprice"><font color="red" size="3">商品价格:</font>￥{$qg->shop_price}</div>
+                    <div class="qiugoulocal"><font color="red" size="3">交易地点:</font>{$qg->location}</div>
+                    <div class="qiugouphone"><font color="red" size="3">手机号:</font>{$qg->phone}</div>
+                    <div class="qiugouqq"><font color="red" size="3">qq:</font>{$qg->qq}</div>
+                    <hr>
+                    </div>
+
+                </li>
+
                 {/foreach}
-            </div>
+                 <li class="item fixed"></li>
+                <li class="item fixed"></li>
+                <li class="item fixed"></li>
+            </ul>
+        </div>
+        {$qiugou->render()}
+
 
 
 
     </div>
+
 </div>
 <div class="return-to-top"><a href=""></a></div>
     <aside>

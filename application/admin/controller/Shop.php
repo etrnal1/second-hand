@@ -16,8 +16,11 @@ use think\Request;
 //分页类
 //使用全部商品表
 use app\admin\model\Shop_all as Sh;
+
+use app\admin\model\Shop_class  as Sc;
 use think\Paginator;
 use think\Controller;
+
 
 
 
@@ -278,6 +281,148 @@ return $this->fetch();
 
 
   }
+/**
+ * 展示分类界面
+ * @return [type] [description]
+ */
+  public function adclass()
+  {
+
+
+    //use 分类表
+
+     // 查询分类信息
+     
+      $sh =  sc::column('class_name','class_id');
+      array_keys($sh);
+
+         array_values($sh);
+
+      dump($sh);
+
+   //    sc::where('status',1)->column('name');
+   // // dump($sh);
+    //foreach($sh as $value){
+     $this->assign('sh',$sh);
+
+    //var_dump($value);
+    //}
+   
+     // 
+     // 展示分类信息到模版
+     // 
+     // 
+     // html 页面进行数据遍历 
+
+   return  $this->fetch();
+
+  }
+
+
+  public function delclass()
+  {
+
+     $key  = input('post.key');
+
+     //id 传过来执行删除操作
+     
+      $result =  Db::name('shop_class')->where('class_id',$key)->delete();
+
+      if($result){
+          return  json(['code'=>1,'msg'=>'删除类成功']);
+
+    }else{
+
+        return   json(['code'=>0,'msg'=>'删除失败']);
+
+
+      }
+
+     // var_dump($result);
+      // "<a  href =""">  ..  " </a>"
+
+      // $('#li').html($data);
+
+      // dump($result);
+
+  }
+
+/**
+ * [cate description]:这个是展示添加类的界面
+ * @return [type] [description]
+ */
+  public function cate()
+  {
+
+    return $this->fetch();
+  }
+
+
+
+
+
+public function us(Sc $sc){
+
+
+  // 获取商品类名
+  
+
+            $classname = input('post.class_name');
+  // class
+  $class  = input('post.class');
+  // 商品图片
+             
+// 获取表单上传文件 例如上传了001.jpg
+         $file = request()->file('image');
+// 移动到框架应用根目录/public/uploads/ 目录下
+         $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
+if($info){
+// 成功上传后 获取上传信息
+// 输出 jpg
+      //  echo $info->getExtension();
+// 输出 20160820/42a79759f284b767dfcb2a0197904287.jpg          
+         // echo $info->getSaveName();
+// 输出 42a79759f284b767dfcb2a0197904287.jpg
+          //echo $info->getFilename();
+}else{
+// 上传失败获取错误信息
+           echo $file->getError();
+      }
+
+
+//获取图片信息
+      $uu = $info->getSaveName();
+//执行插入数据库操作
+
+  $user = Sc::create(['class_name' => $class,'class' =>$class,'image' =>$uu]);
+
+  $this->success('插入成功','/admin/Shop/Cate');
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
 

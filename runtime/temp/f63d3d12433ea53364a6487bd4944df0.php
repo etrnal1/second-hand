@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"C:\wamp\www\second-hand\thinkphp\public/../application/index\view\publish\publish.html";i:1490600686;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:86:"C:\wamp\www\second-hand\thinkphp\public/../application/index\view\publish\publish.html";i:1490770664;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -71,14 +71,12 @@
                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;嗨,<?php echo \think\Session::get('username'); ?></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="<?php echo url('index/person/person'); ?>">个人中心</a></li>
-                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="<?php echo url('index/person/weather'); ?>" target="_blank">查看天气</a></li>
                         <li><a href="<?php echo url('index/auth/logout'); ?>">退出</a></li>
 
                         <!-- <li><a href="#">Separated link</a></li> -->
                       </ul>
                     </div>
-                    <!-- </div> -->
-                    <!-- <a href="/index/auth/logout"><div class="button" >退出</div></a> -->
         </div>
         <?php endif; if(empty(\think\Session::get('username'))): ?>
         <div class="log-re ease2">
@@ -97,7 +95,7 @@
                     <div>
                         <i class="nav-icons"></i>
                         <div id="college"><span><?php echo \think\Session::get('schoolname'); ?></span></div>
-                                        <a class="switch" href="http://www.2shoujie.com/">切换</a>
+                                        <a class="switch" href="<?php echo url('index/index/index'); ?>">切换</a>
                                     </div>
                 </li>
                 <?php foreach($big as $value): ?>
@@ -115,7 +113,6 @@
 
 
                                             <a href="<?php echo url('index/index/one'); ?>?id=<?php echo $value->class_id; ?>}" target="_blank"><?php echo $v->little_name; ?></a>
-                                            <!-- <a href="<?php echo url('index/index/one'); ?>" target="_blank">电动车</a> -->
 
 
 
@@ -136,11 +133,14 @@
                 <input type="file" name="image[]" /> <br>
                 <input type="file" name="image[]" /> <br>
                 <div>商品名称:</div>
-                <div><input type="text" name="name" value="" size="15" style="width:300px;height:50px;"" placeholder="最多25个字" "></div><br>
+                <div><input type="text" name="name" value="" id="shopname" size="15" style="width:300px;height:50px;"" placeholder="最多25个字" "></div><br>
+                <div id="isemailx" style="color: red;font-size: 10px;ma"></div>
                 <div>商品详情:</div>
-                <div><input type="text" name="profile" vlaue="" style="width:300px;height:50px;" placeholder="建议填写物品用途、新旧程度、原价等信息"></div><br>
+                <div><input type="text" name="profile" vlaue="" id="shopprofile" style="width:300px;height:50px;" placeholder="建议填写物品用途、新旧程度、原价等信息"></div><br>
+                <div id="isemaily" style="color: red;font-size: 10px;ma"></div>
                 <div>交易地点:</div>
-                <div><input type="text" name="location" value="" style="width:300px;height:50px;" placeholder="宿舍、教学楼、食堂等"></div><br>
+                <div><input type="text" name="location" value="" id="shoplocal" style="width:300px;height:50px;" placeholder="宿舍、教学楼、食堂等"></div><br>
+                <div id="isemailz" style="color: red;font-size: 10px;ma"></div>
                 <div>商品价格:</div>
                 <div><input type="text" name="price" value="" style="width:300px;height:50px;" placeholder="￥"></div><br>
                 <div>分类:</div>
@@ -154,8 +154,8 @@
                 联系方式：
                 <div>手机号:</div>
                 <div><input type="text" name="phone" id="phone" value="" style="width:300px;height:50px;" placeholder="输入手机号即可发送验证码"></div><br>
-                <div id="isemailx" style="color: red;font-size: 10px;ma"></div>
-                <div id="isemail" style="color: green;font-size: 10px;ma"></div>
+                <div id="isemail" style="color: red;font-size: 10px;ma"></div>
+                <div id="isemailxyz" style="color: green;font-size: 10px;ma"></div>
 
                 <div>QQ:</div>
                 <div><input type="text" name="qq" value="" style="width:300px;height:50px;"></div>
@@ -248,49 +248,88 @@
                 qq: qq,
                 class_name:class_name
             };
-            $.post($('form').attr('action'), params, function(data){
-            if(data.status){
-              setTimeout(function(){
-                  location.href = '<?php echo url("index/index/show"); ?>';
-              }, 1000);
-            }else{
-              alert(data.msg);
+            if((name.length == 0) || (profile.length == 0) || (location.length == 0) || (price.length == 0) || (phone.length == 0) || (qq.length == 0)){
+                alert('信息不全,请确认');
+                 $.post($('form').attr('action'), {}, function(data){
+              }, 'JSON');
+            } else {
+                $.post($('form').attr('action'), params, function(data){
+              }, 'JSON');
             }
-          }, 'JSON');
+
         })
     </script>
-    <script type="text/javascript">
+<!--     <script type="text/javascript">
         $('#phone').blur(function(){
             var phone = $('#phone').val();
             $.post('/index/message',{phone:phone},function(){
 
             })
         })
-    </script>
-<!--     <script type="text/javascript">
+    </script> -->
+    <script type="text/javascript">
     //验证手机号函数
+
         $("#phone").blur(function(){
+
             var phone = $('#phone').val();
+
             if (!checkPhone(phone)) {
-                $('#isemailx').html('手机号格式不正确');
+                $('#isemail').html('手机号格式不正确');
             }else{
                 $('#isemail').html('手机号格式正确');
+                $.post('/index/message',{phone:phone},function(){
 
+            })
+
+            }
+        });
+        $("#shopname").blur(function(){
+
+            var shopname = $('#shopname').val();
+
+            if (!checkProfile(shopname)) {
+                $('#isemailx').html('不能为空');
+            }
+        });
+        $("#shopprofile").blur(function(){
+
+            var shopprofile = $('#shopprofile').val();
+
+            if (!checkProfile(shopprofile)) {
+                $('#isemaily').html('不能为空');
+            }
+        });
+        $("#shoplocal").blur(function(){
+
+            var shoplocal = $('#shoplocal').val();
+
+            if (!checkProfile(shoplocal)) {
+                $('#isemailz').html('不能为空');
             }
         });
 
         function checkPhone(str){
-            if(strlen(str) == 11){
-                var re = /13[123569]{1}\d{8}|15[1235689]\d{8}|188\d{8}/;
+            if(str.length == 11){
+                var re =/^0{0,1}(13[0-9]|15[7-9]|153|156|18[7-9])[0-9]{8}$/;
                 if(re.test(str)){
-                return true;
-                }else{
+                    return true;
+                } else {
                     return false;
                 }
-            } else{
+            } else {
                 return false;
             }
         }
-    </script> -->
+        function checkProfile(str){
+            if(str.length != 0){
+
+                return true;
+
+            } else {
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>

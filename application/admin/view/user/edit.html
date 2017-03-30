@@ -68,7 +68,7 @@
           <button class="button bg-main icon-check-square-o" type="submit"> 提交</button>   
         </div>
       </div>      
-    
+    <span id="msg"></span>
   </div>
 </div>
 </body>
@@ -123,18 +123,13 @@
            $.post(
 
             '/admin/User/upd',{repass:repass},function(data){
-
-              alert(data);
-
               if(data.code){
-                alert('密码修改成功');
 
+                alert(data.msg);
+                $('#msg').html(data.msg);
               }else{
-
-                alert('密码修改失败');
-
-
-              }
+                $('#msg').html('<font color ="red">密码修改失败</font>');
+                 }
 
 
 

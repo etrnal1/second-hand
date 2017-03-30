@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="renderer" content="webkit">
+    <title>网站信息</title>  
+     <link rel="stylesheet" href="__URL__/css/pintuer.css">
+    <link rel="stylesheet" href="__URL__/css/admin.css">
+    <script src="__URL__/js/jquery.js"></script>
+    <script src="__URL__/js/pintuer.js"></script>  
+  </head>
+<body>
+<div class="panel admin-panel">
+  <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong></div>
+  <div class="padding border-bottom">  
+  <a class="button border-yellow" href=""><span class="icon-plus-square-o"></span> 添加内容</a>
+  <span id ="msg"></span>
+  </div> 
+  <table class="table table-hover text-center">
+    <tr>
+      <th width="5%">ID</th>     
+      <th>栏目名称</th>  
+      <th>排序</th>     
+      <th width="250">操作</th>
+    </tr>
+     {foreach $result as $key => $value}
+
+    <tr id ="mssg">
+    <td>{$value['yuyue_id']}</td>
+      <td>{$value['user_id']}</td>
+      <td>{$value['username']}</td>
+      <td>{$value['create_time']}</td>
+      <td><span id ="msg"></span></td>
+   <td>
+      <div class="button-group">
+      <a type="button" class="button border-main" onclick="return up{$value['yuyue_id']}()"><span class="icon-edit"></span>修改</a>
+     
+     <a class="button border-red" href="javascript:void(0)" onclick="return del{$value['yuyue_id']}()"><span class="icon-trash-o"></span> 删除</a>
+      </div>
+      </td>
+    </tr>
+     <script type="text/javascript">
+//这是修改的方法 
+// 这是修改删除的方法
+          function del{$value['yuyue_id']}()
+           {
+            $.post('/admin/Order/shanchu', {id:{$value['yuyue_id']}}, function(data) {
+              /*optional stuff to do after success */
+              if(data.code){
+                     $('#msg').html('删除成功');
+                     $('#mssg').html('');
+                  }else{
+                    $('#msg').html('删除失败');
+              }
+            },'JSON');
+
+           }
+ </script>
+    {/foreach}
+ </table>
+</div>
+<script>
+        /**
+         * 这个是删除u
+         */
+        // function  up{$value['yuyue_id']}()
+        //    // {
+        //    //   // $value[id];用户id 传递过去,然后删除
+        //    //   $.post( '/admin/Order/uda  ',{id:{$value['yuyue_id']}}, function(data){
+        //    //     if(data.code){
+
+        //    //      $('#msg').html('<font color ="green">修改成功</font>');
+
+
+        //    //     }else{
+
+        //    //      $('#msg').html('<font color =""></font>');
+
+        //    //   },'JSON');
+
+
+        //    // }
+
+        
+
+</script>
+<!-- <body>
+<div class="panel admin-panel">
+  <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong></div>
+  <div class="padding border-bottom">  
+  <a class="button border-yellow" href="#"><span class="icon-plus-square-o"></span>订单管理</a>
+  </div> 
+  <table class="table table-hover text-center">
+    <tr>
+
+      <th width="5%">ID</th>     
+      <th>栏目名称</th> 
+      <th>用户名</th>
+      <th>注册时间</th>      
+      <th>排序</th>     
+      <th width="250">操作</th>
+    </tr>
+   {foreach $result as $key => $value}
+    <tr>
+
+     <td>{$value['yuyue_id']}</td>
+      <td>{$value['user_id']}</td>
+      <td>{$value['username']}</td>
+      <td>{$value['create_time']}</td>
+      <td><span id ="msg"></span></td>
+      
+      <div class="button-group">
+      
+       <a class="button border-red" href="javascript:void(0)" onclick="return del(17)"><span class="icon-trash-o"></span> 删除</a>
+      </div>
+      </td>
+    </tr>
+      <script>
+          
+
+
+      </script>
+    {/foreach}
+  </table>
+</div>
+
+<div class="panel admin-panel margin-top">
+ 
+</div>
+</body></html> --> 

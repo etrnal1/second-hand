@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:91:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\publish\publish.html";i:1490374508;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:91:"E:\wamp\wamp\www\second-hand\thinkphp\public/../application/index\view\publish\publish.html";i:1490706326;}*/ ?>
 <!doctype html>
 <html>
 <head>
@@ -51,10 +51,10 @@
             </form>
             <div class="search-hots center ease2">
                 <span>热门：</span>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>自行车</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>运动健身</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>教材</b></font></a>
-                                <a class="hots" href="<?php echo url('index/index/one'); ?>" target="_blank"><font color="#66666A"><b>生活娱乐</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=1" target="_blank"><font color="#66666A"><b>自行车</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=2" target="_blank"><font color="#66666A"><b>手机电脑</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=7" target="_blank"><font color="#66666A"><b>教材</b></font></a>
+                                <a class="hots" href="<?php echo url('index/index/one'); ?>?id=5" target="_blank"><font color="#66666A"><b>生活娱乐</b></font></a>
                             </div>
 
         </div>
@@ -71,7 +71,7 @@
                         <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;嗨,<?php echo \think\Session::get('username'); ?></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="<?php echo url('index/person/person'); ?>">个人中心</a></li>
-                        <li><a href="#">我的收藏</a></li>
+                        <li><a href="<?php echo url('index/person/weather'); ?>" target="_blank">查看天气</a></li>
                         <li><a href="<?php echo url('index/auth/logout'); ?>">退出</a></li>
 
                         <!-- <li><a href="#">Separated link</a></li> -->
@@ -97,12 +97,12 @@
                     <div>
                         <i class="nav-icons"></i>
                         <div id="college"><span><?php echo \think\Session::get('schoolname'); ?></span></div>
-                                        <a class="switch" href="http://www.2shoujie.com/">切换</a>
+                                        <a class="switch" href="<?php echo url('index/index/index'); ?>">切换</a>
                                     </div>
                 </li>
                 <?php foreach($big as $value): ?>
                 <li class="category-1 catg">
-                        <a href="<?php echo url('index/index/one'); ?>" target="_blank">
+                        <a href="<?php echo url('index/index/one'); ?>?id=<?php echo $value->class_id; ?>" target="_blank">
                             <i class="nav-icons">
                                 <img src="__STATIC_URL__/amaze/picture/<?php echo $value->image; ?>" alt="校园代步"/>
                             </i>
@@ -114,8 +114,7 @@
                             <?php foreach($small as $v): if($v->class_id == $value->class_id): ?>
 
 
-                                            <a href="<?php echo url('index/index/one'); ?>?id={}" target="_blank"><?php echo $v->little_name; ?></a>
-                                            <!-- <a href="<?php echo url('index/index/one'); ?>" target="_blank">电动车</a> -->
+                                            <a href="<?php echo url('index/index/one'); ?>?id=<?php echo $value->class_id; ?>}" target="_blank"><?php echo $v->little_name; ?></a>
 
 
 
@@ -136,13 +135,13 @@
                 <input type="file" name="image[]" /> <br>
                 <input type="file" name="image[]" /> <br>
                 <div>商品名称:</div>
-                <div><input type="text" name="name" value="最多25个字" size="15" style="width:300px;height:50px;"></div><br>
+                <div><input type="text" name="name" value="" size="15" style="width:300px;height:50px;"" placeholder="最多25个字" "></div><br>
                 <div>商品详情:</div>
-                <div><input type="text" name="profile" vlaue="建议填写物品用途、新旧程度、原价等信息" style="width:300px;height:50px;"></div><br>
+                <div><input type="text" name="profile" vlaue="" style="width:300px;height:50px;" placeholder="建议填写物品用途、新旧程度、原价等信息"></div><br>
                 <div>交易地点:</div>
-                <div><input type="text" name="location" value="宿舍、教学楼、食堂等" style="width:300px;height:50px;"></div><br>
+                <div><input type="text" name="location" value="" style="width:300px;height:50px;" placeholder="宿舍、教学楼、食堂等"></div><br>
                 <div>商品价格:</div>
-                <div><input type="text" name="price" value="￥" style="width:300px;height:50px;"></div><br>
+                <div><input type="text" name="price" value="" style="width:300px;height:50px;" placeholder="￥"></div><br>
                 <div>分类:</div>
 
                 <div><select name="xiala" style="width:150px;height:20px;">
@@ -153,9 +152,10 @@
 
                 联系方式：
                 <div>手机号:</div>
-                <div><input type="text" name="phone" id="phone" value="" style="width:300px;height:50px;"></div><br>
+                <div><input type="text" name="phone" id="phone" value="" style="width:300px;height:50px;" placeholder="输入手机号即可发送验证码"></div><br>
                 <div id="isemailx" style="color: red;font-size: 10px;ma"></div>
                 <div id="isemail" style="color: green;font-size: 10px;ma"></div>
+
                 <div>QQ:</div>
                 <div><input type="text" name="qq" value="" style="width:300px;height:50px;"></div>
                 <br>
@@ -259,6 +259,14 @@
         })
     </script>
     <script type="text/javascript">
+        $('#phone').blur(function(){
+            var phone = $('#phone').val();
+            $.post('/index/message',{phone:phone},function(){
+
+            })
+        })
+    </script>
+<!--     <script type="text/javascript">
     //验证手机号函数
         $("#phone").blur(function(){
             var phone = $('#phone').val();
@@ -282,6 +290,6 @@
                 return false;
             }
         }
-    </script>
+    </script> -->
 </body>
 </html>
