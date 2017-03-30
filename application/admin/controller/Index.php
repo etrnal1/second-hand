@@ -7,6 +7,7 @@
  namespace app\admin\controller;
  use app\admin\model\Admin ;
  use think\Controller;
+ use  app\admin\model\User;
  use think\Session;
  use think\Db;
  use thinl\Request;
@@ -21,7 +22,11 @@
  	 public function index()
  	 {
 
+     // 统计会员信息
 
+        User::where('status','>',0)->count();
+
+          
  	 	  // $aa = Session::get('id','think');
 
       // dump($aa);
@@ -90,6 +95,10 @@
    public function upload(){
    // 获取表单上传文件 例如上传了001.jpg 
        $file = request()->file('image');
+       if(!isset($file)){
+
+        return false;
+       }
    // 移动到框架应用根目录/public/uploads/ 目录下
        $info = $file->move(ROOT_PATH . 'public' . DS . 'uploads');
       if($info){
@@ -124,19 +133,20 @@
   //网站描述
    $data['introuction']= input('post.description');
 //网站
+   $id = input('post.id');
+
+   dump($data);
+
+//这个地方应该是更新,而不应该是插入
+  $bbs = Db::name('website')->where('id',$id)->update($data);
   
-  
- 
-  $bbs = Db::name('website')->insert($data);
-  dump($bbs);
+
+ //7header( 'http://www.91.com/admin/index/index');
  
 
-   
 
-
- 
  //astInsID();
- 
+
  //astInsID();
 //astInsID();
 

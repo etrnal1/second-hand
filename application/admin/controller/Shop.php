@@ -236,28 +236,27 @@ return $this->fetch();
    }
 
 
-   //商品模糊查询
-   
+//商品模糊查询
     public function search()
     {
+ 
 
-       // 获取keywords
-        $key = input('post.keywords');
-
-          $data = Sh::where('shop_name','LIKE','%'.$key.'%')->select();
+  //根据搜索的关键词去数据库查找相应的数据
 
 
-          if($data){
-                return json(['code'=>'1','msg'=>'这是你要的商品额']);
-
-          }else{
-
-              return json(['code'=>'0','msg'=>'亲没有查到商品哦']);
+         $key = input('post.keywords');
 
 
-          }
+         $data = Sh::where('shop_name','LIKE','%'.$key.'%')->select();
 
-        //where('字段名','表达式','查询条件');
+       if($data){
+              return json(['code'=>'1','msg'=>$data]);
+
+         }else{
+           return json(['code'=>'0','msg'=>'亲没有查到商品哦']);
+         }
+         $this->assign('data',$data);
+
     }
 
 /**
@@ -358,8 +357,15 @@ return $this->fetch();
   }
 
 
+/**
+ * [sup description]这个要显示查找到的商品负责逻辑的处理与修改
+ * @return [type] [description] 
+ *  
+ */
+ public  function   sup()
+ {
 
-
+ }
 
 public function us(Sc $sc){
 

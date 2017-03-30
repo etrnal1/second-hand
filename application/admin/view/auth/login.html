@@ -78,39 +78,29 @@
 
                     }else{
 
-                       // alert(result.msg);
+                        //alert(result.msg);
                     }
 
-                   
-
                     },"JSON");
-            
-            
-
-
+ 
         }else{
 
             $.post('/admin/Auth/mLogin',{username:username,password:password},function(result){
-
-
-                alert(result);
-
-                    if(result.status){
-                            //
+         if(result.status){
                         $('#dl').html('<font color="purple" size="3">欢迎登录,正在为您跳转到后台页面</font>');
                         setTimeout(function(){
                             location.href= '{:url("admin/index/index")}';
 
 
                         },1000);
-             
+
                     }else{
 
                         $('#dl').html('<font color="red">登录失败，请检查用户名或密码是否正确</font>');
                     }
 
                     },"JSON");
-            
+
            // '/admin/Auth/,mlogin',
           //  alert(1);
 

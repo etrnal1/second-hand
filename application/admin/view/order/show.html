@@ -35,8 +35,7 @@
       <td><span id ="msg"></span></td>
    <td>
       <div class="button-group">
-      <a type="button" class="button border-main" onclick="return up{$value['yuyue_id']}()"><span class="icon-edit"></span>修改</a>
-     
+      <a type="button" class="button border-main" onclick="return up{$value['yuyue_id']}()"><span class="icon-edit"></span>审核</a></a>
      <a class="button border-red" href="javascript:void(0)" onclick="return del{$value['yuyue_id']}()"><span class="icon-trash-o"></span> 删除</a>
       </div>
       </td>
@@ -63,7 +62,7 @@
 </div>
 <script>
         /**
-         * 这个是删除u
+         * 这个是删除
          */
         // function  up{$value['yuyue_id']}()
         //    // {
@@ -89,17 +88,17 @@
 <!-- <body>
 <div class="panel admin-panel">
   <div class="panel-head"><strong class="icon-reorder"> 内容列表</strong></div>
-  <div class="padding border-bottom">  
+  <div class="padding border-bottom">
   <a class="button border-yellow" href="#"><span class="icon-plus-square-o"></span>订单管理</a>
-  </div> 
+  </div>
   <table class="table table-hover text-center">
     <tr>
 
-      <th width="5%">ID</th>     
-      <th>栏目名称</th> 
+      <th width="5%">ID</th>
+      <th>栏目名称</th>
       <th>用户名</th>
-      <th>注册时间</th>      
-      <th>排序</th>     
+      <th>注册时间</th>
+      <th>排序</th>sssss
       <th width="250">操作</th>
     </tr>
    {foreach $result as $key => $value}
